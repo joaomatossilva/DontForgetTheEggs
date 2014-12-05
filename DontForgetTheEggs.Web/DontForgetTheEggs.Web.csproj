@@ -39,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.3\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="ShortBus">
       <HintPath>..\packages\ShortBus.3.0.48-beta\lib\ShortBus.dll</HintPath>
@@ -126,6 +132,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -187,6 +194,10 @@
     <ProjectReference Include="..\DontForgetTheEggs.Core\DontForgetTheEggs.Core.csproj">
       <Project>{8346CBE7-C1E9-4F03-9FE8-2335113BDD90}</Project>
       <Name>DontForgetTheEggs.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DontForgetTheEggs.Data\DontForgetTheEggs.Data.csproj">
+      <Project>{26F8239F-B00D-431C-9374-D485CF9901BA}</Project>
+      <Name>DontForgetTheEggs.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
