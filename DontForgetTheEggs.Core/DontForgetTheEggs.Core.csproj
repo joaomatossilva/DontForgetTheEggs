@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CreateGroceryList.cs" />
+    <Compile Include="Commands\SetGroceryListCompleted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\GetGroceryListsOverview.cs" />
     <Compile Include="ViewModels\GroceryListOverviewViewModel.cs" />
