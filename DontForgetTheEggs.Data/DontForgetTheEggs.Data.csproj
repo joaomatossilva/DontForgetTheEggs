@@ -58,11 +58,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlers\AddNewIngredientOnGorceryListHander.cs" />
     <Compile Include="CommandHandlers\CreateGroceryListHandler.cs" />
     <Compile Include="CommandHandlers\SetGroceryListCompletedHandler.cs" />
     <Compile Include="IocDataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryHandlers\GetCategoriesHandler.cs" />
+    <Compile Include="QueryHandlers\GetGroceryListDetailsHandler.cs" />
     <Compile Include="QueryHandlers\GetGroceryListsOverviewHandler.cs" />
+    <Compile Include="Shared\CategorySharedActions.cs" />
+    <Compile Include="Shared\IngredientSharedActions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

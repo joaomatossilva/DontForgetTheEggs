@@ -2,7 +2,7 @@
 using DontForgetTheEggs.Core.Commands;
 using DontForgetTheEggs.Core.Helpers;
 using DontForgetTheEggs.Core.Queries;
-using DontForgetTheEggs.Web.ViewModels;
+using DontForgetTheEggs.Core.ViewModels;
 using ShortBus;
 
 namespace DontForgetTheEggs.Web.Controllers
@@ -42,13 +42,51 @@ namespace DontForgetTheEggs.Web.Controllers
                 Name = createGroceryListViewModel.Name
             };
             var newId = _mediator.RequestAndEnsure(request);
-            return RedirectToAction("Details", new { id = newId});
+            return RedirectToAction("GroceryList", new { id = newId });
         }
 
-        public ActionResult Details(int id)
+        public ActionResult GroceryList(int id)
         {
-            return View();
+            var request = new GetGroceryListDetails {Id = id};
+            var viewModel = _mediator.RequestAndEnsure(request);
+            return View(viewModel);
         }
 
+        public ActionResult AddNewIngredient(int id)
+        {
+            var categories = _mediator.RequestAndEnsure(new GetCategories());
+            var model = new AddNewIngredientViewModel
+                        {
+                            GroceryListId = id,
+                            Categories = categories,
+                            Quantity = 1
+                        };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AddNewIngredient(AddNewIngredientViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var request = new AddNewIngredientOnGorceryList
+                              {
+                                  GroceryListId = model.GroceryListId,
+                                  IngredientName = model.Name,
+                                  Quantity = model.Quantity,
+                                  CategoryId = model.CategoryId,
+                                  CategoryName = model.NewCategoryName
+                              };
+                var result = _mediator.Request(request);
+                if (!result.HasException())
+                {
+                    return RedirectToAction("GroceryList", new {id = model.GroceryListId});
+                }
+
+                ModelState.AddModelError("", result.Exception);
+            }
+            model.Categories = _mediator.RequestAndEnsure(new GetCategories());
+            return View(model);
+        }
     }
 }

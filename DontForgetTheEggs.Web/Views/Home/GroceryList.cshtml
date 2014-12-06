@@ -1,0 +1,43 @@
+﻿@model DontForgetTheEggs.Core.ViewModels.GroceryListDetailsViewModel
+
+@{
+    ViewBag.Title = "GroceryList";
+}
+
+<h2>GroceryList - @Model.Name</h2>
+
+<div>
+    <span>Completed: @Model.Completed</span>
+</div>
+
+<section>
+    <h3>Groceries</h3>
+    <div>
+        <ul>
+            @foreach (var category in Model.Categories)
+            {
+                <li>
+                    <h4>@category.Name (@category.Count)</h4>
+                    <div>
+                        <ul>
+                            @foreach (var grocery in category.Groceries)
+                            {
+                                <li>
+                                    <span>@grocery.Name</span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</section>
+
+<p>
+    @Html.ActionLink("Add new Ingredient", "AddNewIngredient", new {id = Model.Id}, new { @class="btn btn-primary" })
+</p>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
