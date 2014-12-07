@@ -59,7 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandlers\AddNewIngredientOnGorceryListHander.cs" />
+    <Compile Include="CommandHandlers\CreateCategoryHandler.cs" />
     <Compile Include="CommandHandlers\CreateGroceryListHandler.cs" />
+    <Compile Include="CommandHandlers\RenameCategoryHandler.cs" />
     <Compile Include="CommandHandlers\SetGroceryListCompletedHandler.cs" />
     <Compile Include="IocDataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

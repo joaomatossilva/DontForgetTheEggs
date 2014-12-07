@@ -24,6 +24,10 @@ namespace DontForgetTheEggs.Data
                 .AsClosedTypesOf(typeof(IRequestHandler<,>))
                 .AsImplementedInterfaces();
 
+            builder.RegisterAssemblyTypes(typeof(IocDataModule).Assembly)
+                .AsClosedTypesOf(typeof(IAsyncRequestHandler<,>))
+                .AsImplementedInterfaces();
+
             builder.RegisterType<Mediator>().AsImplementedInterfaces().InstancePerLifetimeScope();
 
             // to allow ShortBus to resolve lifetime-scoped dependencies properly, 

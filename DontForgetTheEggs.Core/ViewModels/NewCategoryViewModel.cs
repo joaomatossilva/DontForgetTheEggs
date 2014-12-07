@@ -2,9 +2,8 @@
 
 namespace DontForgetTheEggs.Core.ViewModels
 {
-    public class CategoryViewModel
+    public class NewCategoryViewModel
     {
-        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
     }
