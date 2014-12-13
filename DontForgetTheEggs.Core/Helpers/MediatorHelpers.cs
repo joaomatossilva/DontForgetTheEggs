@@ -15,5 +15,12 @@ namespace DontForgetTheEggs.Core.Helpers
             response.EnsureSuccessResponse();
             return response.Data;
         }
+
+        public static async Task<TData> RequestAndEnsureAsync<TData>(this IMediator mediator, IAsyncRequest<TData> request)
+        {
+            var response = await mediator.RequestAsync(request);
+            response.EnsureSuccessResponse();
+            return response.Data;
+        }
     }
 }

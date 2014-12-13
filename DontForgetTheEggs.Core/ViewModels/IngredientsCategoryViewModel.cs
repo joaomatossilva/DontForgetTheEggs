@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DontForgetTheEggs.Model
+namespace DontForgetTheEggs.Core.ViewModels
 {
-    public class Category
+    public class IngredientsCategoryViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        public virtual ICollection<Ingredient> Ingredients { get; set; } 
+        public IEnumerable<IngredientViewModel> Ingredients { get; set; }
     }
 }

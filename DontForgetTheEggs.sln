@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontForgetTheEggs.Web", "DontForgetTheEggs.Web\DontForgetTheEggs.Web.csproj", "{929C5D46-C428-4C66-BA22-0FBE63CBEABD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{26F8239F-B00D-431C-9374-D485CF9901BA} = {26F8239F-B00D-431C-9374-D485CF9901BA}
+		{AF8640EB-6D8F-4C14-8F15-3533316B4548} = {AF8640EB-6D8F-4C14-8F15-3533316B4548}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontForgetTheEggs.Model", "DontForgetTheEggs.Model\DontForgetTheEggs.Model.csproj", "{AF8640EB-6D8F-4C14-8F15-3533316B4548}"
 EndProject

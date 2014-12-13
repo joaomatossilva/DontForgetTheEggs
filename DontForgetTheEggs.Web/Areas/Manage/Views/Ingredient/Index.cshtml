@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DontForgetTheEggs.Core.ViewModels.IngredientsCategoryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ingredients</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@foreach (var category in Model)
+{
+    <h3>@category.Name</h3>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in category.Ingredients)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                    @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+                </td>
+            </tr>
+        }
+
+    </table>
+}
