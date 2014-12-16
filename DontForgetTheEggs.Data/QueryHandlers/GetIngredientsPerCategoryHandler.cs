@@ -30,7 +30,12 @@ namespace DontForgetTheEggs.Data.QueryHandlers
                     Ingredients = c.Ingredients.Select(i => new IngredientViewModel
                     {
                         Id = i.Id,
-                        Name = i.Name
+                        Name = i.Name,
+                        Category = new CategoryViewModel
+                        {
+                            Id = c.Id,
+                            Name = c.Name
+                        }
                     })
                 }).ToListAsync();
         }

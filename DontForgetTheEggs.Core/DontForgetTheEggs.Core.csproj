@@ -49,6 +49,7 @@
     <Compile Include="Commands\AddNewIngredientOnGorceryList.cs" />
     <Compile Include="Commands\CreateCategory.cs" />
     <Compile Include="Commands\CreateGroceryList.cs" />
+    <Compile Include="Commands\EditIngredient.cs" />
     <Compile Include="Commands\CreateIngredient.cs" />
     <Compile Include="Commands\RenameCategory.cs" />
     <Compile Include="Commands\SetGroceryListCompleted.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Queries\GetCategories.cs" />
     <Compile Include="Queries\GetGroceryListDetails.cs" />
     <Compile Include="Queries\GetGroceryListsOverview.cs" />
+    <Compile Include="Queries\GetIngredient.cs" />
     <Compile Include="Queries\GetIngredientsPerCategory.cs" />
     <Compile Include="ViewModels\AddNewIngredientViewModel.cs" />
     <Compile Include="ViewModels\IngredientsCategoryViewModel.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="ViewModels\CreateGroceryListViewModel.cs" />
     <Compile Include="ViewModels\GroceryListDetailsViewModel.cs" />
     <Compile Include="ViewModels\GroceryListOverviewViewModel.cs" />
+    <Compile Include="ViewModels\EditIngredientViewModel.cs" />
     <Compile Include="ViewModels\NewIngredientViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

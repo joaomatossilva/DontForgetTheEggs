@@ -61,6 +61,7 @@
     <Compile Include="CommandHandlers\AddNewIngredientOnGorceryListHander.cs" />
     <Compile Include="CommandHandlers\CreateCategoryHandler.cs" />
     <Compile Include="CommandHandlers\CreateGroceryListHandler.cs" />
+    <Compile Include="CommandHandlers\EditIngredientHandler.cs" />
     <Compile Include="CommandHandlers\CreateIngredientHandler.cs" />
     <Compile Include="CommandHandlers\RenameCategoryHandler.cs" />
     <Compile Include="CommandHandlers\SetGroceryListCompletedHandler.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="QueryHandlers\GetCategoriesHandler.cs" />
     <Compile Include="QueryHandlers\GetGroceryListDetailsHandler.cs" />
     <Compile Include="QueryHandlers\GetGroceryListsOverviewHandler.cs" />
+    <Compile Include="QueryHandlers\GetIngredientHandler.cs" />
     <Compile Include="QueryHandlers\GetIngredientsPerCategoryHandler.cs" />
     <Compile Include="Shared\CategorySharedActions.cs" />
     <Compile Include="Shared\IngredientSharedActions.cs" />

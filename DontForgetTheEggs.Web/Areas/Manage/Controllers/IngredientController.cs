@@ -55,5 +55,39 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
             return View(newIngredientViewModel);
         }
 
+        public async Task<ActionResult> Edit(int id)
+        {
+            var categories = _mediator.RequestAndEnsure(new GetCategories());
+            var ingredient = await _mediator.RequestAndEnsureAsync(new GetIngredient {Id = id});
+            return View(new EditIngredientViewModel
+            {
+                Categories = categories, 
+                IngredientId = ingredient.Id,
+                Name = ingredient.Name,
+                CategoryId = ingredient.Category.Id
+            });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(EditIngredientViewModel editIngredientViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _mediator.RequestAsync(new EditIngredient
+                {
+                    IngredientId = editIngredientViewModel.IngredientId
+                    Name = editIngredientViewModel.Name,
+                    CategoryId = editIngredientViewModel.CategoryId,
+                    NewCategoryName = editIngredientViewModel.NewCategoryName
+                });
+                if (!result.HasException())
+                {
+                    return RedirectToAction("Index");
+                }
+                ModelState.AddModelError("*", result.Exception.Message);
+            }
+            editIngredientViewModel.Categories = _mediator.RequestAndEnsure(new GetCategories());
+            return View(editIngredientViewModel);
+        }
     }
 }
