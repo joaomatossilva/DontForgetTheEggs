@@ -1,11 +1,12 @@
-﻿using DontForgetTheEggs.Core.Commands;
+﻿using System.Threading.Tasks;
+using DontForgetTheEggs.Core.Commands;
 using DontForgetTheEggs.Data.Shared;
 using DontForgetTheEggs.Model;
 using ShortBus;
 
 namespace DontForgetTheEggs.Data.CommandHandlers
 {
-    public class AddNewIngredientOnGorceryListHander : IRequestHandler<AddNewIngredientOnGorceryList, UnitType>
+    public class AddNewIngredientOnGorceryListHander : IAsyncRequestHandler<AddNewIngredientOnGorceryList, UnitType>
     {
         private readonly EggsContext _context;
 
@@ -14,18 +15,18 @@ namespace DontForgetTheEggs.Data.CommandHandlers
             _context = context;
         }
 
-        public UnitType Handle(AddNewIngredientOnGorceryList request)
+        public async Task<UnitType> HandleAsync(AddNewIngredientOnGorceryList request)
         {
             //Get or create CAtegory
             var category = request.CategoryId != null
-                ? CategorySharedActions.GetCategory(_context, request.CategoryId.Value)
+                ? await CategorySharedActions.GetCategoryAsync(_context, request.CategoryId.Value)
                 : CategorySharedActions.CreateCategory(_context, request.CategoryName);
             //Create new Ingredient
             var newIngredient = IngredientSharedActions.CreateIngredient(_context, request.IngredientName, category);
             //Create Grocery for the Ingredient and add it to the list
-            var groceryList = _context.GroceryLists.Find(request.GroceryListId);
+            var groceryList = await _context.GroceryLists.FindAsync(request.GroceryListId);
             groceryList.Groceries.Add(new Grocery { Ingredient = newIngredient, Quanity = request.Quantity});
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return UnitType.Default;
         }
     }

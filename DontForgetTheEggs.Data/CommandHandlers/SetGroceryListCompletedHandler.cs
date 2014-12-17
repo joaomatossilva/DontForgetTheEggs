@@ -1,11 +1,13 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
 using DontForgetTheEggs.Core.Commands;
 using DontForgetTheEggs.Model;
 using ShortBus;
 
 namespace DontForgetTheEggs.Data.CommandHandlers
 {
-    public class SetGroceryListCompletedHandler : IRequestHandler<SetGroceryListCompleted, UnitType>
+    public class SetGroceryListCompletedHandler : IAsyncRequestHandler<SetGroceryListCompleted, UnitType>
     {
         private readonly EggsContext _context;
 
@@ -14,11 +16,11 @@ namespace DontForgetTheEggs.Data.CommandHandlers
             _context = context;
         }
 
-        public UnitType Handle(SetGroceryListCompleted request)
+        public async Task<UnitType> HandleAsync(SetGroceryListCompleted request)
         {
-            var groceryList = _context.GroceryLists.Single(x => x.Id == request.GroceryListId);
+            var groceryList = await _context.GroceryLists.SingleAsync(x => x.Id == request.GroceryListId);
             groceryList.Completed = request.Completed;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return UnitType.Default;
         }
     }

@@ -2,7 +2,7 @@
 
 namespace DontForgetTheEggs.Core.Commands
 {
-    public class CreateGroceryList : IRequest<int>
+    public class CreateGroceryList : IAsyncRequest<int>
     {
         public string Name { get; set; }
     }

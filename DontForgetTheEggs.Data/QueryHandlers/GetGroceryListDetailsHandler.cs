@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using DontForgetTheEggs.Core.Queries;
 using DontForgetTheEggs.Core.ViewModels;
 using DontForgetTheEggs.Model;
@@ -7,7 +8,7 @@ using ShortBus;
 
 namespace DontForgetTheEggs.Data.QueryHandlers
 {
-    public class GetGroceryListDetailsHandler : IRequestHandler<GetGroceryListDetails, GroceryListDetailsViewModel>
+    public class GetGroceryListDetailsHandler : IAsyncRequestHandler<GetGroceryListDetails, GroceryListDetailsViewModel>
     {
         private readonly EggsContext _context;
 
@@ -16,15 +17,16 @@ namespace DontForgetTheEggs.Data.QueryHandlers
             _context = context;
         }
 
-        public GroceryListDetailsViewModel Handle(GetGroceryListDetails request)
+        public async Task<GroceryListDetailsViewModel> HandleAsync(GetGroceryListDetails request)
         {
-            var groceryList = _context.GroceryLists
+            var groceryList = await _context.GroceryLists
                 .Include(x => x.Groceries)
                 .Include(x => x.Groceries.Select(g => g.Ingredient))
                 .Include(x => x.Groceries.Select(g => g.Ingredient.Category))
-                .First(x => x.Id == request.Id);
+                .FirstAsync(x => x.Id == request.Id);
 
-            var groceries = from g in groceryList.Groceries
+            //No need for async here because we already selected all the data from the grocery list
+            var groceriesPerCategory = from g in groceryList.Groceries
                 group g by g.Ingredient.Category
                 into cats
                 select new GroceriesCategoryViewModel
@@ -44,7 +46,7 @@ namespace DontForgetTheEggs.Data.QueryHandlers
                             Id = groceryList.Id,
                             Completed = groceryList.Completed,
                             Name = groceryList.Name,
-                            Categories = groceries
+                            Categories = groceriesPerCategory
                         };
             return model;
         }

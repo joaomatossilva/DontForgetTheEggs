@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Threading.Tasks;
+using System.Web.Mvc;
 using DontForgetTheEggs.Core.Commands;
 using DontForgetTheEggs.Core.Helpers;
 using DontForgetTheEggs.Core.Queries;
@@ -17,10 +18,10 @@ namespace DontForgetTheEggs.Web.Controllers
         }
 
 
-        public ActionResult Index(bool? includeCompleted)
+        public async Task<ActionResult> Index(bool? includeCompleted)
         {
             var request = new GetGroceryListsOverview { IncludeCompleted = includeCompleted == true};
-            var groceriesOverView = _mediator.RequestAndEnsure(request);
+            var groceriesOverView = await _mediator.RequestAndEnsureAsync(request);
             return View(groceriesOverView);
         }
 
@@ -30,7 +31,7 @@ namespace DontForgetTheEggs.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CreateGroceryListViewModel createGroceryListViewModel)
+        public async Task<ActionResult> Create(CreateGroceryListViewModel createGroceryListViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -41,20 +42,20 @@ namespace DontForgetTheEggs.Web.Controllers
             {
                 Name = createGroceryListViewModel.Name
             };
-            var newId = _mediator.RequestAndEnsure(request);
+            var newId = await _mediator.RequestAndEnsureAsync(request);
             return RedirectToAction("GroceryList", new { id = newId });
         }
 
-        public ActionResult GroceryList(int id)
+        public async Task<ActionResult> GroceryList(int id)
         {
             var request = new GetGroceryListDetails {Id = id};
-            var viewModel = _mediator.RequestAndEnsure(request);
+            var viewModel = await _mediator.RequestAndEnsureAsync(request);
             return View(viewModel);
         }
 
-        public ActionResult AddNewIngredient(int id)
+        public async Task<ActionResult> AddNewIngredient(int id)
         {
-            var categories = _mediator.RequestAndEnsure(new GetCategories());
+            var categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
             var model = new AddNewIngredientViewModel
                         {
                             GroceryListId = id,
@@ -65,7 +66,7 @@ namespace DontForgetTheEggs.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddNewIngredient(AddNewIngredientViewModel model)
+        public async Task<ActionResult> AddNewIngredient(AddNewIngredientViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +78,7 @@ namespace DontForgetTheEggs.Web.Controllers
                                   CategoryId = model.CategoryId,
                                   CategoryName = model.NewCategoryName
                               };
-                var result = _mediator.Request(request);
+                var result = await _mediator.RequestAsync(request);
                 if (!result.HasException())
                 {
                     return RedirectToAction("GroceryList", new {id = model.GroceryListId});
@@ -85,7 +86,7 @@ namespace DontForgetTheEggs.Web.Controllers
 
                 ModelState.AddModelError("", result.Exception);
             }
-            model.Categories = _mediator.RequestAndEnsure(new GetCategories());
+            model.Categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
             return View(model);
         }
     }

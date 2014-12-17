@@ -1,4 +1,5 @@
-﻿using DontForgetTheEggs.Model;
+﻿using System.Threading.Tasks;
+using DontForgetTheEggs.Model;
 
 namespace DontForgetTheEggs.Data.Shared
 {
@@ -9,9 +10,9 @@ namespace DontForgetTheEggs.Data.Shared
             return context.Categories.Add(new Category {Name = name});
         }
 
-        internal static Category GetCategory(EggsContext context, int id)
+        internal static async Task<Category> GetCategoryAsync(EggsContext context, int id)
         {
-            return context.Categories.Find(id);
+            return await context.Categories.FindAsync(id);
         }
     }
 }

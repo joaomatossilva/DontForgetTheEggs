@@ -4,7 +4,7 @@ using ShortBus;
 
 namespace DontForgetTheEggs.Core.Queries
 {
-    public class GetCategories : IRequest<IEnumerable<CategoryViewModel>>
+    public class GetCategories : IAsyncRequest<IEnumerable<CategoryViewModel>>
     {
     }
 }

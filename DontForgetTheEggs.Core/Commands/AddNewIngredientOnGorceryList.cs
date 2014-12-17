@@ -2,7 +2,7 @@
 
 namespace DontForgetTheEggs.Core.Commands
 {
-    public class AddNewIngredientOnGorceryList : IRequest<UnitType>
+    public class AddNewIngredientOnGorceryList : IAsyncRequest<UnitType>
     {
         public int GroceryListId { get; set; }
         public int Quantity { get; set; }

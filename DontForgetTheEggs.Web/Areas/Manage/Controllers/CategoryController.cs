@@ -19,9 +19,9 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
         }
 
         // GET: Manage/Category
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var categories = _mediator.RequestAndEnsure(new GetCategories());
+            var categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
             return View(categories);
         }
 
@@ -48,10 +48,10 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
         }
 
         // GET: Manage/Category/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
             //TODO: I shortcutted here
-            var category = _mediator.RequestAndEnsure(new GetCategories())
+            var category = (await _mediator.RequestAndEnsureAsync(new GetCategories()))
                 .Single(c => c.Id == id);
             return View(category);
         }

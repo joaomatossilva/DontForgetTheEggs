@@ -23,7 +23,7 @@ namespace DontForgetTheEggs.Data.CommandHandlers
         {
             //Get or create CAtegory
             var category = request.CategoryId != null
-                ? CategorySharedActions.GetCategory(_context, request.CategoryId.Value)
+                ? await CategorySharedActions.GetCategoryAsync(_context, request.CategoryId.Value)
                 : CategorySharedActions.CreateCategory(_context, request.NewCategoryName);
             //Create new Ingredient
             var newIngredient = IngredientSharedActions.CreateIngredient(_context, request.Name, category);

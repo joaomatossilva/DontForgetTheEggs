@@ -1,10 +1,11 @@
-﻿using DontForgetTheEggs.Core.Commands;
+﻿using System.Threading.Tasks;
+using DontForgetTheEggs.Core.Commands;
 using DontForgetTheEggs.Model;
 using ShortBus;
 
 namespace DontForgetTheEggs.Data.CommandHandlers
 {
-    public class CreateGroceryListHandler : IRequestHandler<CreateGroceryList, int>
+    public class CreateGroceryListHandler : IAsyncRequestHandler<CreateGroceryList, int>
     {
         private readonly EggsContext _context;
 
@@ -13,14 +14,14 @@ namespace DontForgetTheEggs.Data.CommandHandlers
             _context = context;
         }
 
-        public int Handle(CreateGroceryList request)
+        public async Task<int> HandleAsync(CreateGroceryList request)
         {
             var newGroceryList = new GroceryList
             {
                 Name = request.Name
             };
             _context.GroceryLists.Add(newGroceryList);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return newGroceryList.Id;
         }
     }

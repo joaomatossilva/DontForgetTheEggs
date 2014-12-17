@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
 using DontForgetTheEggs.Core.Queries;
 using DontForgetTheEggs.Core.ViewModels;
 using DontForgetTheEggs.Model;
@@ -6,7 +8,7 @@ using ShortBus;
 
 namespace DontForgetTheEggs.Data.QueryHandlers
 {
-    public class GetGroceryListsOverviewHandler : IRequestHandler<GetGroceryListsOverview, GroceryListsOverviewViewModel>
+    public class GetGroceryListsOverviewHandler : IAsyncRequestHandler<GetGroceryListsOverview, GroceryListsOverviewViewModel>
     {
         private readonly EggsContext _eggsContext;
 
@@ -15,7 +17,7 @@ namespace DontForgetTheEggs.Data.QueryHandlers
             _eggsContext = eggsContext;
         }
 
-        public GroceryListsOverviewViewModel Handle(GetGroceryListsOverview request)
+        public async Task<GroceryListsOverviewViewModel> HandleAsync(GetGroceryListsOverview request)
         {
             var basequery = _eggsContext.GroceryLists.AsQueryable();
             if (!request.IncludeCompleted)
@@ -23,13 +25,15 @@ namespace DontForgetTheEggs.Data.QueryHandlers
                 basequery = basequery.Where(groceryList => !groceryList.Completed);
             }
 
-            var groceryLists = basequery.Select(groceryList => new GroceryListOverview
-                                                               {
-                                                                   Id = groceryList.Id,
-                                                                   Completed = groceryList.Completed,
-                                                                   Name = groceryList.Name,
-                                                                   IngredientsCount = groceryList.Groceries.Count()
-                                                               });
+            var groceryLists = await basequery
+                .Select(groceryList => new GroceryListOverview
+                                       {
+                                           Id = groceryList.Id,
+                                           Completed = groceryList.Completed,
+                                           Name = groceryList.Name,
+                                           IngredientsCount = groceryList.Groceries.Count()
+                                       })
+                .ToListAsync();
             return new GroceryListsOverviewViewModel {GroceryLists = groceryLists};
         }
     }

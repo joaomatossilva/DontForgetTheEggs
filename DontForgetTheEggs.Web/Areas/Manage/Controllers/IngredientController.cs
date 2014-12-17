@@ -28,9 +28,9 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
             return View(ingredientsPerCategory);
         }
 
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            var categories = _mediator.RequestAndEnsure(new GetCategories());
+            var categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
             return View(new NewIngredientViewModel{ Categories = categories});
         }
 
@@ -51,13 +51,13 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
                 }
                 ModelState.AddModelError("*", result.Exception.Message);
             }
-            newIngredientViewModel.Categories = _mediator.RequestAndEnsure(new GetCategories());
+            newIngredientViewModel.Categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
             return View(newIngredientViewModel);
         }
 
         public async Task<ActionResult> Edit(int id)
         {
-            var categories = _mediator.RequestAndEnsure(new GetCategories());
+            var categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
             var ingredient = await _mediator.RequestAndEnsureAsync(new GetIngredient {Id = id});
             return View(new EditIngredientViewModel
             {
@@ -75,7 +75,7 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
             {
                 var result = await _mediator.RequestAsync(new EditIngredient
                 {
-                    IngredientId = editIngredientViewModel.IngredientId
+                    IngredientId = editIngredientViewModel.IngredientId,
                     Name = editIngredientViewModel.Name,
                     CategoryId = editIngredientViewModel.CategoryId,
                     NewCategoryName = editIngredientViewModel.NewCategoryName
@@ -86,7 +86,7 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
                 }
                 ModelState.AddModelError("*", result.Exception.Message);
             }
-            editIngredientViewModel.Categories = _mediator.RequestAndEnsure(new GetCategories());
+            editIngredientViewModel.Categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
             return View(editIngredientViewModel);
         }
     }

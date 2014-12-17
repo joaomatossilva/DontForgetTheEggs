@@ -3,7 +3,7 @@ using ShortBus;
 
 namespace DontForgetTheEggs.Core.Queries
 {
-    public class GetGroceryListDetails : IRequest<GroceryListDetailsViewModel>
+    public class GetGroceryListDetails : IAsyncRequest<GroceryListDetailsViewModel>
     {
         public int Id { get; set; }
     }
