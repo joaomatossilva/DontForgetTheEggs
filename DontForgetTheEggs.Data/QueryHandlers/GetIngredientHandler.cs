@@ -9,7 +9,7 @@ using DontForgetTheEggs.Model;
 using ShortBus;
 using System.Data.Entity;
 
-namespace DontForgetTheEggs.Data.QueryHandlers
+namespace DontForgetTheEggs.Business.QueryHandlers
 {
     public class GetIngredientHandler : IAsyncRequestHandler<GetIngredient, IngredientViewModel>
     {

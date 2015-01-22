@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using DontForgetTheEggs.Core.Commands;
-using DontForgetTheEggs.Data.Shared;
+using DontForgetTheEggs.Business.Shared;
 using DontForgetTheEggs.Model;
 using ShortBus;
 
-namespace DontForgetTheEggs.Data.CommandHandlers
+namespace DontForgetTheEggs.Business.CommandHandlers
 {
     public class AddNewIngredientOnGorceryListHander : IAsyncRequestHandler<AddNewIngredientOnGorceryList, UnitType>
     {

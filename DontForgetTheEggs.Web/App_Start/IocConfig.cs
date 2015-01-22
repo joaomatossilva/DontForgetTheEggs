@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using DontForgetTheEggs.Data;
+using DontForgetTheEggs.Business;
 
 namespace DontForgetTheEggs.Web
 {
@@ -18,7 +18,7 @@ namespace DontForgetTheEggs.Web
             // Register your MVC controllers.
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-            builder.RegisterAssemblyModules(typeof(IocDataModule).Assembly);
+            builder.RegisterAssemblyModules(typeof(IocBusinessModule).Assembly);
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();

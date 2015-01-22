@@ -3,7 +3,7 @@ using DontForgetTheEggs.Core.Commands;
 using DontForgetTheEggs.Model;
 using ShortBus;
 
-namespace DontForgetTheEggs.Data.CommandHandlers
+namespace DontForgetTheEggs.Business.CommandHandlers
 {
     public class CreateGroceryListHandler : IAsyncRequestHandler<CreateGroceryList, int>
     {

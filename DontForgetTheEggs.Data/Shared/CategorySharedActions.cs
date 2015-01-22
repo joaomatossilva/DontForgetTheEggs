@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using DontForgetTheEggs.Model;
 
-namespace DontForgetTheEggs.Data.Shared
+namespace DontForgetTheEggs.Business.Shared
 {
     internal static class CategorySharedActions
     {

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DontForgetTheEggs.Core.Commands;
-using DontForgetTheEggs.Data.Shared;
+using DontForgetTheEggs.Business.Shared;
 using DontForgetTheEggs.Model;
 using ShortBus;
 
-namespace DontForgetTheEggs.Data.CommandHandlers
+namespace DontForgetTheEggs.Business.CommandHandlers
 {
     public class CreateCategoryHandler : IAsyncRequestHandler<CreateCategory, int>
     {

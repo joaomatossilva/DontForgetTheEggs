@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontForgetTheEggs.Web", "DontForgetTheEggs.Web\DontForgetTheEggs.Web.csproj", "{929C5D46-C428-4C66-BA22-0FBE63CBEABD}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontForgetTheEggs.Web", "Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontForgetTheEggs.Model", "DontForgetTheEggs.Model\DontForgetTheEggs.Model.csproj", "{AF8640EB-6D8F-4C14-8F15-3533316B4548}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontForgetTheEggs.Data", "DontForgetTheEggs.Data\DontForgetTheEggs.Data.csproj", "{26F8239F-B00D-431C-9374-D485CF9901BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontForgetTheEggs.Business", "DontForgetTheEggs.Data\DontForgetTheEggs.Business.csproj", "{26F8239F-B00D-431C-9374-D485CF9901BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontForgetTheEggs.Core", "DontForgetTheEggs.Core\DontForgetTheEggs.Core.csproj", "{8346CBE7-C1E9-4F03-9FE8-2335113BDD90}"
 EndProject

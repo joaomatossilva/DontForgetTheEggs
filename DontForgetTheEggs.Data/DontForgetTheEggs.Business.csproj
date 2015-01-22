@@ -7,8 +7,8 @@
     <ProjectGuid>{26F8239F-B00D-431C-9374-D485CF9901BA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DontForgetTheEggs.Data</RootNamespace>
-    <AssemblyName>DontForgetTheEggs.Data</AssemblyName>
+    <RootNamespace>DontForgetTheEggs.Business</RootNamespace>
+    <AssemblyName>DontForgetTheEggs.Business</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -6,7 +6,7 @@ using DontForgetTheEggs.Core.ViewModels;
 using DontForgetTheEggs.Model;
 using ShortBus;
 
-namespace DontForgetTheEggs.Data.QueryHandlers
+namespace DontForgetTheEggs.Business.QueryHandlers
 {
     public class GetGroceryListsOverviewHandler : IAsyncRequestHandler<GetGroceryListsOverview, GroceryListsOverviewViewModel>
     {

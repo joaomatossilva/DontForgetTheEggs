@@ -8,9 +8,9 @@ using Autofac.Features.Variance;
 using DontForgetTheEggs.Model;
 using ShortBus;
 
-namespace DontForgetTheEggs.Data
+namespace DontForgetTheEggs.Business
 {
-    public class IocDataModule : Module
+    public class IocBusinessModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -20,11 +20,11 @@ namespace DontForgetTheEggs.Data
             // this is needed to allow the Mediator to resolve contravariant handlers (not enabled by default in Autofac)
             builder.RegisterSource(new ContravariantRegistrationSource());
 
-            builder.RegisterAssemblyTypes(typeof(IocDataModule).Assembly)
+            builder.RegisterAssemblyTypes(typeof(IocBusinessModule).Assembly)
                 .AsClosedTypesOf(typeof(IRequestHandler<,>))
                 .AsImplementedInterfaces();
 
-            builder.RegisterAssemblyTypes(typeof(IocDataModule).Assembly)
+            builder.RegisterAssemblyTypes(typeof(IocBusinessModule).Assembly)
                 .AsClosedTypesOf(typeof(IAsyncRequestHandler<,>))
                 .AsImplementedInterfaces();
 
@@ -49,7 +49,7 @@ namespace DontForgetTheEggs.Data
         //this is a hack to pin a type from EntityFramework.SqlServer Assembly so it will
         //be copied directly to the assemblies referencing this one
         internal static Type TypePin;
-        static IocDataModule()
+        static IocBusinessModule()
         {
             TypePin = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
         }
