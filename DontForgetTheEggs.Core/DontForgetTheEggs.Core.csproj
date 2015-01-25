@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddIngredientOnGorceryList.cs" />
     <Compile Include="Commands\AddNewIngredientOnGorceryList.cs" />
     <Compile Include="Commands\CreateCategory.cs" />
     <Compile Include="Commands\CreateGroceryList.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Queries\GetGroceryListsOverview.cs" />
     <Compile Include="Queries\GetIngredient.cs" />
     <Compile Include="Queries\GetIngredientsPerCategory.cs" />
+    <Compile Include="ViewModels\AddIngredientViewModel.cs" />
     <Compile Include="ViewModels\AddNewIngredientViewModel.cs" />
     <Compile Include="ViewModels\IngredientsCategoryViewModel.cs" />
     <Compile Include="ViewModels\IngredientViewModel.cs" />

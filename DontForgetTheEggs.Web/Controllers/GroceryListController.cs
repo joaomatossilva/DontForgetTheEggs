@@ -64,5 +64,40 @@ namespace DontForgetTheEggs.Web.Controllers
             model.Categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
             return View(model);
         }
+
+        public async Task<ActionResult> AddIngredient(int id)
+        {
+            var ingredientsPerCategry = await _mediator.RequestAndEnsureAsync(new GetIngredientsPerCategory());
+            var viewModel = new AddIngredientViewModel
+                            {
+                                IngredientsList = ingredientsPerCategry,
+                                GroceryListId = id,
+                                Quantity = 1
+                            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddIngredient(AddIngredientViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var request = new AddIngredientOnGorceryList
+                              {
+                                  GroceryListId = model.GroceryListId,
+                                  IngredientId = model.IngredientId.Value,
+                                  Quantity = model.Quantity
+                              };
+                var result = await _mediator.RequestAsync(request);
+                if (!result.HasException())
+                {
+                    return RedirectToAction("Index", new { id = model.GroceryListId });
+                }
+
+                ModelState.AddModelError("", result.Exception);
+            }
+            model.IngredientsList = await _mediator.RequestAndEnsureAsync(new GetIngredientsPerCategory());
+            return View(model);
+        }
     }
 }

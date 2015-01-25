@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlers\AddIngredientOnGorceryListHander.cs" />
     <Compile Include="CommandHandlers\AddNewIngredientOnGorceryListHander.cs" />
     <Compile Include="CommandHandlers\CreateCategoryHandler.cs" />
     <Compile Include="CommandHandlers\CreateGroceryListHandler.cs" />

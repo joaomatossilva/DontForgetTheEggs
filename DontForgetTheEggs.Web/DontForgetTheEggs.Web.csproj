@@ -152,6 +152,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\addIngredient.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Manage\Views\web.config" />
@@ -192,6 +193,7 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\GroceryList\Index.cshtml" />
     <Content Include="Views\GroceryList\AddNewIngredient.cshtml" />
+    <Content Include="Views\GroceryList\AddIngredient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
