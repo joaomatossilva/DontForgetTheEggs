@@ -43,51 +43,9 @@ namespace DontForgetTheEggs.Web.Controllers
                 Name = createGroceryListViewModel.Name
             };
             var newId = await _mediator.RequestAndEnsureAsync(request);
-            return RedirectToAction("GroceryList", new { id = newId });
+            return RedirectToAction("Index", "GroceryList", new { id = newId });
         }
 
-        public async Task<ActionResult> GroceryList(int id)
-        {
-            var request = new GetGroceryListDetails {Id = id};
-            var viewModel = await _mediator.RequestAndEnsureAsync(request);
-            return View(viewModel);
-        }
-
-        public async Task<ActionResult> AddNewIngredient(int id)
-        {
-            var categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
-            var model = new AddNewIngredientViewModel
-                        {
-                            GroceryListId = id,
-                            Categories = categories,
-                            Quantity = 1
-                        };
-            return View(model);
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> AddNewIngredient(AddNewIngredientViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var request = new AddNewIngredientOnGorceryList
-                              {
-                                  GroceryListId = model.GroceryListId,
-                                  IngredientName = model.Name,
-                                  Quantity = model.Quantity,
-                                  CategoryId = model.CategoryId,
-                                  CategoryName = model.NewCategoryName
-                              };
-                var result = await _mediator.RequestAsync(request);
-                if (!result.HasException())
-                {
-                    return RedirectToAction("GroceryList", new {id = model.GroceryListId});
-                }
-
-                ModelState.AddModelError("", result.Exception);
-            }
-            model.Categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
-            return View(model);
-        }
+        
     }
 }
