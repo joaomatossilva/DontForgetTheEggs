@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using System.Threading.Tasks;
 using DontForgetTheEggs.Core.Commands;
 using DontForgetTheEggs.Business.Shared;
 using DontForgetTheEggs.Model;
@@ -17,6 +18,15 @@ namespace DontForgetTheEggs.Business.CommandHandlers
 
         public async Task<UnitType> HandleAsync(AddIngredientOnGorceryList request)
         {
+            //If there is an Ingredient already on the list, we increment the Quantity.
+            var existingGrocery = await _context.Groceries
+                .SingleOrDefaultAsync(g => g.Ingredient.Id == request.IngredientId && g.GroceryList.Id == request.GroceryListId);
+            if (existingGrocery != null)
+            {
+                existingGrocery.Quanity += request.Quantity;
+                return UnitType.Default;
+            }
+
             //Get Ingredient
             var newIngredient = await _context.Ingredients.FindAsync(request.IngredientId);
             //Create Grocery for the Ingredient and add it to the list

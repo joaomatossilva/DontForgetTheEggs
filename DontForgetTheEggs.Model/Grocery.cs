@@ -6,5 +6,6 @@
         public Ingredient Ingredient { get; set; }
         public int Quanity { get; set; }
         public bool Checked { get; set; }
+        public GroceryList GroceryList { get; set; }
     }
 }
