@@ -209,7 +209,7 @@
       <Project>{8346CBE7-C1E9-4F03-9FE8-2335113BDD90}</Project>
       <Name>DontForgetTheEggs.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DontForgetTheEggs.Data\DontForgetTheEggs.Business.csproj">
+    <ProjectReference Include="..\DontForgetTheEggs.Business\DontForgetTheEggs.Business.csproj">
       <Project>{26F8239F-B00D-431C-9374-D485CF9901BA}</Project>
       <Name>DontForgetTheEggs.Business</Name>
     </ProjectReference>
