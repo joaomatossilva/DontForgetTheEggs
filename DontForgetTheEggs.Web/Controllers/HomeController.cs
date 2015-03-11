@@ -27,22 +27,17 @@ namespace DontForgetTheEggs.Web.Controllers
 
         public ActionResult Create()
         {
-            return View(new CreateGroceryListViewModel());
+            return View(new CreateGroceryList());
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreateGroceryListViewModel createGroceryListViewModel)
+        public async Task<ActionResult> Create(CreateGroceryList model)
         {
             if (!ModelState.IsValid)
             {
-                return View(createGroceryListViewModel);
+                return View(model);
             }
-
-            var request = new CreateGroceryList
-            {
-                Name = createGroceryListViewModel.Name
-            };
-            var newId = await _mediator.RequestAndEnsureAsync(request);
+            var newId = await _mediator.RequestAndEnsureAsync(model);
             return RedirectToAction("Index", "GroceryList", new { id = newId });
         }
 

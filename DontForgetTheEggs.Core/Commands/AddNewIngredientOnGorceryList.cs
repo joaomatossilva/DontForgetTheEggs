@@ -1,13 +1,17 @@
-﻿using ShortBus;
+﻿using System.ComponentModel.DataAnnotations;
+using ShortBus;
 
 namespace DontForgetTheEggs.Core.Commands
 {
     public class AddNewIngredientOnGorceryList : IAsyncRequest<UnitType>
     {
+        [Required]
         public int GroceryListId { get; set; }
-        public int Quantity { get; set; }
-        public string IngredientName { get; set; }
+        [Required]
+        public string Name { get; set; }
         public int? CategoryId { get; set; }
         public string CategoryName { get; set; }
+        [Range(1, 10000)]
+        public int Quantity { get; set; }
     }
 }

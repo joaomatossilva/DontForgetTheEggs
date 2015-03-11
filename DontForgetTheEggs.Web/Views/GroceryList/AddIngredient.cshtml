@@ -1,5 +1,5 @@
 ﻿@using System.Data.Entity.ModelConfiguration.Conventions
-@model DontForgetTheEggs.Core.ViewModels.AddIngredientViewModel
+@model DontForgetTheEggs.Core.Commands.AddIngredientOnGorceryList
 
 @{
     ViewBag.Title = "Add Ingredient";
@@ -9,7 +9,7 @@
 
 <h3 id="selectIngredient">Select Ingredient</h3>
 
-@foreach (var category in Model.IngredientsList)
+@foreach (var category in ViewBag.IngredientsList)
 {
     <h3>@category.Name</h3>
     <table class="table">
@@ -48,9 +48,9 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
         <div class="form-group">
-            @Html.LabelFor(model => model.Ingredient, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Ingredient", "Ingredient", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Ingredient, htmlAttributes: new { @readonly = "readonly", id = "ingredientName" }) <a href="#selectIngredient" class="btn btn-info">Select other</a>
+                @Html.TextBox("Ingredient", "", htmlAttributes: new { @readonly = "readonly", id = "ingredientName" }) <a href="#selectIngredient" class="btn btn-info">Select other</a>
                 @Html.ValidationMessageFor(model => model.IngredientId, "", new { @class = "text-danger" })
             </div>
         </div>

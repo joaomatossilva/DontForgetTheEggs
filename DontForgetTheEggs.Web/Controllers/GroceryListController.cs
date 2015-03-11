@@ -30,30 +30,21 @@ namespace DontForgetTheEggs.Web.Controllers
 
         public async Task<ActionResult> AddNewIngredient(int id)
         {
-            var categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
-            var model = new AddNewIngredientViewModel
+            await SetupCategoriesOptions();
+            var model = new AddNewIngredientOnGorceryList
             {
                 GroceryListId = id,
-                Categories = categories,
                 Quantity = 1
             };
             return View(model);
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddNewIngredient(AddNewIngredientViewModel model)
+        public async Task<ActionResult> AddNewIngredient(AddNewIngredientOnGorceryList model)
         {
             if (ModelState.IsValid)
             {
-                var request = new AddNewIngredientOnGorceryList
-                {
-                    GroceryListId = model.GroceryListId,
-                    IngredientName = model.Name,
-                    Quantity = model.Quantity,
-                    CategoryId = model.CategoryId,
-                    CategoryName = model.NewCategoryName
-                };
-                var result = await _mediator.RequestAsync(request);
+                var result = await _mediator.RequestAsync(model);
                 if (!result.HasException())
                 {
                     return RedirectToAction("Index", new { id = model.GroceryListId });
@@ -61,34 +52,32 @@ namespace DontForgetTheEggs.Web.Controllers
 
                 ModelState.AddModelError("", result.Exception);
             }
-            model.Categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
+            await SetupCategoriesOptions();
             return View(model);
+        }
+
+        private async Task SetupCategoriesOptions()
+        {
+            ViewBag.Categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
         }
 
         public async Task<ActionResult> AddIngredient(int id)
         {
-            var ingredientsPerCategry = await _mediator.RequestAndEnsureAsync(new GetIngredientsPerCategory());
-            var viewModel = new AddIngredientViewModel
+            var model = new AddIngredientOnGorceryList
                             {
-                                IngredientsList = ingredientsPerCategry,
                                 GroceryListId = id,
                                 Quantity = 1
                             };
-            return View(viewModel);
+            await SetupIngredientsPerCategoryOptions();
+            return View(model);
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddIngredient(AddIngredientViewModel model)
+        public async Task<ActionResult> AddIngredient(AddIngredientOnGorceryList model)
         {
             if (ModelState.IsValid)
             {
-                var request = new AddIngredientOnGorceryList
-                              {
-                                  GroceryListId = model.GroceryListId,
-                                  IngredientId = model.IngredientId.Value,
-                                  Quantity = model.Quantity
-                              };
-                var result = await _mediator.RequestAsync(request);
+                var result = await _mediator.RequestAsync(model);
                 if (!result.HasException())
                 {
                     return RedirectToAction("Index", new { id = model.GroceryListId });
@@ -96,8 +85,13 @@ namespace DontForgetTheEggs.Web.Controllers
 
                 ModelState.AddModelError("", result.Exception);
             }
-            model.IngredientsList = await _mediator.RequestAndEnsureAsync(new GetIngredientsPerCategory());
+            await SetupIngredientsPerCategoryOptions();
             return View(model);
+        }
+
+        private async Task SetupIngredientsPerCategoryOptions()
+        {
+            ViewBag.IngredientsList = await _mediator.RequestAndEnsureAsync(new GetIngredientsPerCategory());
         }
     }
 }

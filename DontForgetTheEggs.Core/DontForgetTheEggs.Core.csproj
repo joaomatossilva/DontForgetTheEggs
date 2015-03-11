@@ -61,13 +61,10 @@
     <Compile Include="Queries\GetGroceryListsOverview.cs" />
     <Compile Include="Queries\GetIngredient.cs" />
     <Compile Include="Queries\GetIngredientsPerCategory.cs" />
-    <Compile Include="ViewModels\AddIngredientViewModel.cs" />
-    <Compile Include="ViewModels\AddNewIngredientViewModel.cs" />
     <Compile Include="ViewModels\IngredientsCategoryViewModel.cs" />
     <Compile Include="ViewModels\IngredientViewModel.cs" />
     <Compile Include="ViewModels\NewCategoryViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\CreateGroceryListViewModel.cs" />
     <Compile Include="ViewModels\GroceryListDetailsViewModel.cs" />
     <Compile Include="ViewModels\GroceryListOverviewViewModel.cs" />
     <Compile Include="ViewModels\EditIngredientViewModel.cs" />
