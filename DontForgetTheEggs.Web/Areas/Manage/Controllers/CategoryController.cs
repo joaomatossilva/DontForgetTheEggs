@@ -33,18 +33,18 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
 
         // POST: Manage/Category/Create
         [HttpPost]
-        public async Task<ActionResult> Create(NewCategoryViewModel newCategoryView)
+        public async Task<ActionResult> Create(CreateCategory newCategory)
         {
             if (ModelState.IsValid)
             {
-                var result = await _mediator.RequestAsync(new CreateCategory {Name = newCategoryView.Name});
+                var result = await _mediator.RequestAsync(newCategory);
                 if (!result.HasException())
                 {
                     return RedirectToAction("Index");
                 }
                 ModelState.AddModelError("*", result.Exception.Message);
             }
-            return View(newCategoryView);
+            return View(newCategory);
         }
 
         // GET: Manage/Category/Edit/5
@@ -58,18 +58,18 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
 
         // POST: Manage/Category/Edit/5
         [HttpPost]
-        public async Task<ActionResult> Edit(CategoryViewModel model)
+        public async Task<ActionResult> Edit(RenameCategory category)
         {
             if (ModelState.IsValid)
             {
-                var result = await _mediator.RequestAsync(new RenameCategory { Id = model.Id, Name = model.Name });
+                var result = await _mediator.RequestAsync(category);
                 if (!result.HasException())
                 {
                     return RedirectToAction("Index");
                 }
                 ModelState.AddModelError("", result.Exception.Message);
             }
-            return View(model);
+            return View(category);
         }
 
     }

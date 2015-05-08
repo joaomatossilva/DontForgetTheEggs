@@ -30,38 +30,37 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
 
         public async Task<ActionResult> Create()
         {
-            var categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
-            return View(new NewIngredientViewModel{ Categories = categories});
+            await SetupCategoriesOptions();
+            return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(NewIngredientViewModel newIngredientViewModel)
+        public async Task<ActionResult> Create(CreateIngredient createIngredient)
         {
             if (ModelState.IsValid)
             {
-                var result = await _mediator.RequestAsync(new CreateIngredient
-                {
-                    Name = newIngredientViewModel.Name,
-                    CategoryId = newIngredientViewModel.CategoryId,
-                    NewCategoryName = newIngredientViewModel.NewCategoryName
-                });
+                var result = await _mediator.RequestAsync(createIngredient);
                 if (!result.HasException())
                 {
                     return RedirectToAction("Index");
                 }
                 ModelState.AddModelError("*", result.Exception.Message);
             }
-            newIngredientViewModel.Categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
-            return View(newIngredientViewModel);
+            await SetupCategoriesOptions();
+            return View(createIngredient);
+        }
+
+        private async Task SetupCategoriesOptions()
+        {
+            ViewBag.Categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
         }
 
         public async Task<ActionResult> Edit(int id)
         {
-            var categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
+            await SetupCategoriesOptions();
             var ingredient = await _mediator.RequestAndEnsureAsync(new GetIngredient {Id = id});
-            return View(new EditIngredientViewModel
+            return View(new EditIngredient
             {
-                Categories = categories, 
                 IngredientId = ingredient.Id,
                 Name = ingredient.Name,
                 CategoryId = ingredient.Category.Id
@@ -69,25 +68,19 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(EditIngredientViewModel editIngredientViewModel)
+        public async Task<ActionResult> Edit(EditIngredient editIngredient)
         {
             if (ModelState.IsValid)
             {
-                var result = await _mediator.RequestAsync(new EditIngredient
-                {
-                    IngredientId = editIngredientViewModel.IngredientId,
-                    Name = editIngredientViewModel.Name,
-                    CategoryId = editIngredientViewModel.CategoryId,
-                    NewCategoryName = editIngredientViewModel.NewCategoryName
-                });
+                var result = await _mediator.RequestAsync(editIngredient);
                 if (!result.HasException())
                 {
                     return RedirectToAction("Index");
                 }
                 ModelState.AddModelError("*", result.Exception.Message);
             }
-            editIngredientViewModel.Categories = await _mediator.RequestAndEnsureAsync(new GetCategories());
-            return View(editIngredientViewModel);
+            await SetupCategoriesOptions();
+            return View(editIngredient);
         }
     }
 }

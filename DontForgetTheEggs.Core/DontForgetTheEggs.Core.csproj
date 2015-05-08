@@ -63,12 +63,9 @@
     <Compile Include="Queries\GetIngredientsPerCategory.cs" />
     <Compile Include="ViewModels\IngredientsCategoryViewModel.cs" />
     <Compile Include="ViewModels\IngredientViewModel.cs" />
-    <Compile Include="ViewModels\NewCategoryViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\GroceryListDetailsViewModel.cs" />
     <Compile Include="ViewModels\GroceryListOverviewViewModel.cs" />
-    <Compile Include="ViewModels\EditIngredientViewModel.cs" />
-    <Compile Include="ViewModels\NewIngredientViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

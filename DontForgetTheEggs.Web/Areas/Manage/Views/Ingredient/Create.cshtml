@@ -1,4 +1,5 @@
-﻿@model DontForgetTheEggs.Core.ViewModels.NewIngredientViewModel
+﻿@using DontForgetTheEggs.Core.ViewModels
+@model DontForgetTheEggs.Core.Commands.CreateIngredient
 
 @{
     ViewBag.Title = "Create";
@@ -25,7 +26,7 @@
         <div class="form-group">
             @{
     var categories = new[] { new { Text = "-- New Category --", Value = "" } }
-        .Concat(Model.Categories
+        .Concat(((IEnumerable<CategoryViewModel>)ViewBag.Categories)
             .Select(c => new
             {
                 Text = c.Name,
