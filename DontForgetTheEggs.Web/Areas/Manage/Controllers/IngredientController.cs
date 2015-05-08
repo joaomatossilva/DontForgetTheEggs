@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using DontForgetTheEggs.Core.Commands;
-using DontForgetTheEggs.Core.Queries;
+using DontForgetTheEggs.Core.Categories;
+using DontForgetTheEggs.Core.Ingedients;
 using DontForgetTheEggs.Web.Helpers;
 using ShortBus;
 

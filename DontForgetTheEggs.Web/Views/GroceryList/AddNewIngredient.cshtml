@@ -1,4 +1,5 @@
-﻿@model DontForgetTheEggs.Core.ViewModels.AddNewIngredientViewModel
+﻿@using DontForgetTheEggs.Core.Categories.ViewModels
+@model DontForgetTheEggs.Core.Groceries.AddNewIngredientOnGorceryList
 
 @{
     ViewBag.Title = "Add New Ingredient";
@@ -35,7 +36,7 @@
         <div class="form-group">
             @{
                 var categories = new[] {new {Text = "-- New Category --", Value = ""}}
-                    .Concat(Model.Categories
+                    .Concat(((IEnumerable<CategoryViewModel>)ViewBag.Categories)
                         .Select(c => new {
                                          Text = c.Name, 
                                          Value = c.Id.ToString()
@@ -49,10 +50,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NewCategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NewCategoryName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NewCategoryName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
             </div>
         </div>
 

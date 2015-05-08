@@ -1,8 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using DontForgetTheEggs.Core.Commands;
-using DontForgetTheEggs.Core.Queries;
+using DontForgetTheEggs.Core.Categories;
 using DontForgetTheEggs.Web.Helpers;
 using ShortBus;
 
@@ -50,7 +49,7 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
             //TODO: I shortcutted here
             var category = (await _mediator.RequestAndEnsureAsync(new GetCategories()))
                 .Single(c => c.Id == id);
-            return View(category);
+            return View(new RenameCategory { Id = category.Id, Name = category.Name });
         }
 
         // POST: Manage/Category/Edit/5
@@ -59,7 +58,7 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(await _mediator.RequestAndValidateAsync(category, ModelState));
+                if(await _mediator.RequestAndValidateAsync(category, ModelState))
                 {
                     return RedirectToAction("Index");
                 }

@@ -58,23 +58,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandlers\AddIngredientOnGorceryListHander.cs" />
-    <Compile Include="CommandHandlers\AddNewIngredientOnGorceryListHander.cs" />
-    <Compile Include="CommandHandlers\CreateCategoryHandler.cs" />
-    <Compile Include="CommandHandlers\CreateGroceryListHandler.cs" />
-    <Compile Include="CommandHandlers\EditIngredientHandler.cs" />
-    <Compile Include="CommandHandlers\CreateIngredientHandler.cs" />
-    <Compile Include="CommandHandlers\RenameCategoryHandler.cs" />
-    <Compile Include="CommandHandlers\SetGroceryListCompletedHandler.cs" />
+    <Compile Include="Groceries\AddIngredientOnGorceryListHander.cs" />
+    <Compile Include="Groceries\AddNewIngredientOnGorceryListHander.cs" />
+    <Compile Include="Categories\CreateCategoryHandler.cs" />
+    <Compile Include="Groceries\CreateGroceryListHandler.cs" />
+    <Compile Include="Ingedients\EditIngredientHandler.cs" />
+    <Compile Include="Ingedients\CreateIngredientHandler.cs" />
+    <Compile Include="Categories\RenameCategoryHandler.cs" />
+    <Compile Include="Groceries\SetGroceryListCompletedHandler.cs" />
     <Compile Include="IocDataModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryHandlers\GetCategoriesHandler.cs" />
-    <Compile Include="QueryHandlers\GetGroceryListDetailsHandler.cs" />
-    <Compile Include="QueryHandlers\GetGroceryListsOverviewHandler.cs" />
-    <Compile Include="QueryHandlers\GetIngredientHandler.cs" />
-    <Compile Include="QueryHandlers\GetIngredientsPerCategoryHandler.cs" />
-    <Compile Include="Shared\CategorySharedActions.cs" />
-    <Compile Include="Shared\IngredientSharedActions.cs" />
+    <Compile Include="Categories\GetCategoriesHandler.cs" />
+    <Compile Include="Groceries\GetGroceryListDetailsHandler.cs" />
+    <Compile Include="Groceries\GetGroceryListsOverviewHandler.cs" />
+    <Compile Include="Ingedients\GetIngredientHandler.cs" />
+    <Compile Include="Ingedients\GetIngredientsPerCategoryHandler.cs" />
+    <Compile Include="Categories\CategorySharedActions.cs" />
+    <Compile Include="Ingedients\IngredientSharedActions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -90,6 +90,7 @@
       <Name>DontForgetTheEggs.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

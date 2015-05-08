@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using DontForgetTheEggs.Core.Commands;
-using DontForgetTheEggs.Core.Queries;
-using DontForgetTheEggs.Core.ViewModels;
+using DontForgetTheEggs.Core.Categories;
+using DontForgetTheEggs.Core.Groceries;
+using DontForgetTheEggs.Core.Ingedients;
 using DontForgetTheEggs.Web.Helpers;
 using ShortBus;
 
