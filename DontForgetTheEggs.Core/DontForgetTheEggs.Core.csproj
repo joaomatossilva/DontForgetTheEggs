@@ -54,7 +54,6 @@
     <Compile Include="Commands\CreateIngredient.cs" />
     <Compile Include="Commands\RenameCategory.cs" />
     <Compile Include="Commands\SetGroceryListCompleted.cs" />
-    <Compile Include="Helpers\MediatorHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\GetCategories.cs" />
     <Compile Include="Queries\GetGroceryListDetails.cs" />

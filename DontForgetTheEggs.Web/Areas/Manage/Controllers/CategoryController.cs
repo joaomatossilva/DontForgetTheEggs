@@ -2,9 +2,8 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using DontForgetTheEggs.Core.Commands;
-using DontForgetTheEggs.Core.Helpers;
 using DontForgetTheEggs.Core.Queries;
-using DontForgetTheEggs.Core.ViewModels;
+using DontForgetTheEggs.Web.Helpers;
 using ShortBus;
 
 namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
@@ -37,12 +36,10 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _mediator.RequestAsync(newCategory);
-                if (!result.HasException())
+                if (await _mediator.RequestAndValidateAsync(newCategory, ModelState))
                 {
                     return RedirectToAction("Index");
                 }
-                ModelState.AddModelError("*", result.Exception.Message);
             }
             return View(newCategory);
         }
@@ -62,12 +59,10 @@ namespace DontForgetTheEggs.Web.Areas.Manage.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _mediator.RequestAsync(category);
-                if (!result.HasException())
+                if(await _mediator.RequestAndValidateAsync(category, ModelState));
                 {
                     return RedirectToAction("Index");
                 }
-                ModelState.AddModelError("", result.Exception.Message);
             }
             return View(category);
         }

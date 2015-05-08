@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using ShortBus;
 
-namespace DontForgetTheEggs.Core.Helpers
+namespace DontForgetTheEggs.Web.Helpers
 {
     public static class MediatorHelpers
     {
@@ -25,6 +23,17 @@ namespace DontForgetTheEggs.Core.Helpers
                 throw new Exception("Error occurred during request execution", response.Exception);
             }
             return response.Data;
+        }
+
+        public static async Task<bool> RequestAndValidateAsync<TData>(this IMediator mediator, IAsyncRequest<TData> request, ModelStateDictionary modelState)
+        {
+            var response = await mediator.RequestAsync(request);
+            if (response.HasException())
+            {
+                modelState.AddModelError("*", response.Exception.Message);
+                return false;
+            }
+            return true;
         }
     }
 }

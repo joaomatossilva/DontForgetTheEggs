@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using DontForgetTheEggs.Core.Commands;
-using DontForgetTheEggs.Core.Helpers;
 using DontForgetTheEggs.Core.Queries;
 using DontForgetTheEggs.Core.ViewModels;
+using DontForgetTheEggs.Web.Helpers;
 using ShortBus;
 
 namespace DontForgetTheEggs.Web.Controllers

@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using DontForgetTheEggs.Core.Commands;
-using DontForgetTheEggs.Core.Helpers;
 using DontForgetTheEggs.Core.Queries;
 using DontForgetTheEggs.Core.ViewModels;
+using DontForgetTheEggs.Web.Helpers;
 using ShortBus;
 
 namespace DontForgetTheEggs.Web.Controllers
@@ -44,13 +44,10 @@ namespace DontForgetTheEggs.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _mediator.RequestAsync(model);
-                if (!result.HasException())
+                if (await _mediator.RequestAndValidateAsync(model, ModelState))
                 {
                     return RedirectToAction("Index", new { id = model.GroceryListId });
                 }
-
-                ModelState.AddModelError("", result.Exception);
             }
             await SetupCategoriesOptions();
             return View(model);
@@ -77,13 +74,10 @@ namespace DontForgetTheEggs.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _mediator.RequestAsync(model);
-                if (!result.HasException())
+                if (await _mediator.RequestAndValidateAsync(model, ModelState))
                 {
                     return RedirectToAction("Index", new { id = model.GroceryListId });
                 }
-
-                ModelState.AddModelError("", result.Exception);
             }
             await SetupIngredientsPerCategoryOptions();
             return View(model);
