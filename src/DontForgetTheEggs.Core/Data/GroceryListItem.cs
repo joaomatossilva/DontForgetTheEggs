@@ -11,6 +11,7 @@ namespace DontForgetTheEggs.Core.Data
         public int Id { get; set; }
         public int Quantity { get; set; }
         public bool Checked { get; set; }
+        public DateTime? CheckedDatedUtc { get; set; }
         public int GroceryId { get; set; }
         public virtual Grocery Grocery { get; set; }
         public int GroceryListId { get; set; }
