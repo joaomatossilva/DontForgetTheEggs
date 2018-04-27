@@ -6,7 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using DontForgetTheEggs.Migrations.Runners;
+using DontForgetTheEggs.Migrations;
+using DontForgetTheEggs.Web.Infrastructure.FeatureFolders;
 
 namespace DontForgetTheEggs.Web
 {
@@ -21,6 +22,10 @@ namespace DontForgetTheEggs.Web
 
             //Experimental - Run migrations on startup
             MigrationsRunner.MigrateToLatest(ConfigurationManager.ConnectionStrings["ApplicationDb"].ConnectionString);
+
+            //Set up the view locator for the Feature Folders layout
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new FeatureViewLocationRazorViewEngine());
         }
     }
 }

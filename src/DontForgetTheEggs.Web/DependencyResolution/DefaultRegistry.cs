@@ -16,23 +16,23 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace DontForgetTheEggs.Web.DependencyResolution {
+    using DontForgetTheEggs.Web.Infrastructure.FeatureFolders;
     using StructureMap;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
-	
-    public class DefaultRegistry : Registry {
-        #region Constructors and Destructors
+    using System.Web.Mvc;
 
-        public DefaultRegistry() {
-            Scan(
-                scan => {
+    public class DefaultRegistry : Registry {
+
+        public DefaultRegistry()
+        {
+            Scan(scan =>
+                {
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
-					scan.With(new ControllerConvention());
+                    scan.With(new ControllerConvention());
                 });
-            //For<IExample>().Use<Example>();
+            For<IControllerFactory>().Use<FeatureControllerFactory>();
         }
-
-        #endregion
     }
 }
