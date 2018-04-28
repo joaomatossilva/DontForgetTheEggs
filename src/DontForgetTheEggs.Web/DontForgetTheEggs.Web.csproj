@@ -190,6 +190,7 @@
     </Compile>
     <Compile Include="Infrastructure\FeatureFolders\FeatureControllerFactory.cs" />
     <Compile Include="Infrastructure\FeatureFolders\FeatureViewLocationRazorViewEngine.cs" />
+    <Compile Include="Infrastructure\ModelBinders\SetModelOnViewDataModelBinder.cs" />
     <Compile Include="Infrastructure\Validation\EggsHandleErrorAttribute.cs" />
     <Compile Include="Infrastructure\Validation\FluentValidatorFactory.cs" />
     <Compile Include="Infrastructure\Validation\ValidateModelAttribute.cs" />
