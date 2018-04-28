@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Exceptions\EggsDataException.cs" />
     <Compile Include="Common\Extensions\PagedListExtensions.cs" />
     <Compile Include="Data\Category.cs" />
     <Compile Include="Data\EggsContext.cs" />

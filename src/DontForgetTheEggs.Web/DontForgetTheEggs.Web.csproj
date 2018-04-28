@@ -190,6 +190,9 @@
     </Compile>
     <Compile Include="Infrastructure\FeatureFolders\FeatureControllerFactory.cs" />
     <Compile Include="Infrastructure\FeatureFolders\FeatureViewLocationRazorViewEngine.cs" />
+    <Compile Include="Infrastructure\Validation\EggsHandleErrorAttribute.cs" />
+    <Compile Include="Infrastructure\Validation\FluentValidatorFactory.cs" />
+    <Compile Include="Infrastructure\Validation\ValidateModelAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +251,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DontForgetTheEggs.Core\DontForgetTheEggs.Core.csproj">
+      <Project>{F8BB8ED6-3943-4BB1-8B55-0533AF3DDE1C}</Project>
+      <Name>DontForgetTheEggs.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DontForgetTheEggs.Migrations\DontForgetTheEggs.Migrations.csproj">
       <Project>{F501EFD1-244A-446B-B2A0-3C6B37DCB32F}</Project>
       <Name>DontForgetTheEggs.Migrations</Name>

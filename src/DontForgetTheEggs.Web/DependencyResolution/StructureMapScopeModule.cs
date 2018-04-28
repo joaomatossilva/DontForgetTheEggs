@@ -1,7 +1,7 @@
 namespace DontForgetTheEggs.Web.DependencyResolution {
     using System.Web;
 
-    using DontForgetTheEggs.Web.App_Start;
+    using DontForgetTheEggs.Web;
 
     using StructureMap.Web.Pipeline;
 

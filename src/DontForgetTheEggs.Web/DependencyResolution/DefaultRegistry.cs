@@ -17,6 +17,9 @@
 
 namespace DontForgetTheEggs.Web.DependencyResolution {
     using DontForgetTheEggs.Web.Infrastructure.FeatureFolders;
+    using DontForgetTheEggs.Web.Infrastructure.Validation;
+    using FluentValidation;
+    using FluentValidation.Mvc;
     using StructureMap;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
@@ -32,7 +35,13 @@ namespace DontForgetTheEggs.Web.DependencyResolution {
                     scan.WithDefaultConventions();
                     scan.With(new ControllerConvention());
                 });
+
+            //register the controller factory for the feature folders
             For<IControllerFactory>().Use<FeatureControllerFactory>();
+
+            //Hook up the fluent validator on the MVC pipeline
+            For<ModelValidatorProvider>().Use<FluentValidationModelValidatorProvider>();
+            For<IValidatorFactory>().Use<FluentValidatorFactory>();
         }
     }
 }
