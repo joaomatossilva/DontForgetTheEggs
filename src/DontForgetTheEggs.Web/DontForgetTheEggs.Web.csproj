@@ -190,6 +190,13 @@
     </Compile>
     <Compile Include="Infrastructure\FeatureFolders\FeatureControllerFactory.cs" />
     <Compile Include="Infrastructure\FeatureFolders\FeatureViewLocationRazorViewEngine.cs" />
+    <Compile Include="Infrastructure\MetadataResouceKeysConvention\ConventionalModelMetadataProvider.cs" />
+    <Compile Include="Infrastructure\MetadataResouceKeysConvention\Extensions\AttributeExtensions.cs" />
+    <Compile Include="Infrastructure\MetadataResouceKeysConvention\Extensions\DisplayAttributeExtensions.cs" />
+    <Compile Include="Infrastructure\MetadataResouceKeysConvention\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Infrastructure\MetadataResouceKeysConvention\Extensions\ReflectionExtensions.cs" />
+    <Compile Include="Infrastructure\MetadataResouceKeysConvention\Extensions\StringExtensions.cs" />
+    <Compile Include="Infrastructure\MetadataResouceKeysConvention\MetadataConventionsHelper.cs" />
     <Compile Include="Infrastructure\ModelBinders\SetModelOnViewDataModelBinder.cs" />
     <Compile Include="Infrastructure\Validation\EggsHandleErrorAttribute.cs" />
     <Compile Include="Infrastructure\Validation\FluentValidatorFactory.cs" />

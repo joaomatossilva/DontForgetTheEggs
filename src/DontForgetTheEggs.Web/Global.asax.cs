@@ -6,8 +6,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using DontForgetTheEggs.Core.Translations;
 using DontForgetTheEggs.Migrations;
 using DontForgetTheEggs.Web.Infrastructure.FeatureFolders;
+using DontForgetTheEggs.Web.Infrastructure.MetadataResouceKeysConvention;
 using DontForgetTheEggs.Web.Infrastructure.ModelBinders;
 
 namespace DontForgetTheEggs.Web
@@ -27,6 +29,13 @@ namespace DontForgetTheEggs.Web
             //Set up the view locator for the Feature Folders layout
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new FeatureViewLocationRazorViewEngine());
+
+            //Setup default MVC provider for fetching the display name based on conventions
+            ModelMetadataProviders.Current = new ConventionalModelMetadataProvider(typeof(AppResources));
+            //Setup FluentValidatior to also fetch the display name based on the same conventions
+            FluentValidation.ValidatorOptions.DisplayNameResolver = (type, memberInfo, expression) => memberInfo == null
+                ? null
+                : MetadataConventionsHelper.GetDisplayName(type, memberInfo, typeof(AppResources));
 
             //This prevents the default adding for non nullable members, because it will cause duplication
             //with the fluentvalidation ones and it causes an error
