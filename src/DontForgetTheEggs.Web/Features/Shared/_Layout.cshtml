@@ -3,40 +3,81 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <!-- inject:Styles:css -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/admin-lte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/node_modules/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="/node_modules/admin-lte/plugins/timepicker/bootstrap-timepicker.min.css">
+    <!-- endinject -->
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+@*
+    BODY TAG OPTIONS:
+    =================
+    Apply one or more of the following classes to get the
+    desired effect
+    |---------------------------------------------------------|
+    | SKINS         | skin-blue                               |
+    |               | skin-black                              |
+    |               | skin-purple                             |
+    |               | skin-yellow                             |
+    |               | skin-red                                |
+    |               | skin-green                              |
+    |---------------------------------------------------------|
+    |LAYOUT OPTIONS | fixed                                   |
+    |               | layout-boxed                            |
+    |               | layout-top-nav                          |
+    |               | sidebar-collapse                        |
+    |               | sidebar-mini                            |
+    |---------------------------------------------------------|
+*@
+<body class="sidebar-mini">
+    <div class="wrapper">
+
+        @Html.Partial("_Header")
+
+        @*Left side column. contains the logo and sidebar*@
+        @Html.Partial("_LeftSideBar")
+
+        @*Content Wrapper. Contains page content*@
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>@ViewBag.Title</h1>
+            </section>
+            <!-- Main content -->
+            <section class="content container-fluid">
+                <!--------------------------
+            | Your Page Content Here |
+            -------------------------->
+                @RenderBody()
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        @*Main Footer*@
+        @Html.Partial("_Footer")
+
+    </div>
+    <!-- /.wrapper -->
+
+    <!-- REQUIRED JS SCRIPTS -->
+    <!-- inject:EndOfBodyApp:js -->
+    <script src="/node_modules/admin-lte/plugins/jquery/jquery.min.js"></script>
+    <script src="/node_modules/admin-lte/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/node_modules/admin-lte/plugins/select2/select2.full.min.js"></script>
+    <script src="/node_modules/admin-lte/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="/node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.pt.js"></script>
+    <script src="/node_modules/admin-lte/plugins/timepicker/bootstrap-timepicker.js"></script>
+    <script src="/node_modules/moment/min/moment.min.js"></script>
+    <script src="/node_modules/moment/locale/pt.js"></script>
+    <script src="/node_modules/admin-lte/dist/js/adminlte.min.js"></script>
+    <!-- endinject -->
     @RenderSection("scripts", required: false)
 </body>
 </html>

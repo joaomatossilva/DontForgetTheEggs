@@ -1,0 +1,46 @@
+﻿@using DontForgetTheEggs.Core.Translations
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        
+        <!-- search form (Optional) -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        <!-- /.search form -->
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu" data-widget="tree">
+            @GenerateMenuListElement("Home Page", "Index", "Home", null, "fa-home")
+        </ul>
+        <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+@helper GenerateMenuListElement(string text, string action, string controller, string requiredRole = null, string menuIcon = "", string bubbleText = "")
+{
+    var isActive = (string)ViewContext.Controller.ControllerContext.RouteData.Values["controller"] == controller;
+    var itemUrl = Url.Action(action, controller);
+
+    if (!(!string.IsNullOrEmpty(requiredRole) && !ViewContext.HttpContext.User.IsInRole(requiredRole)))
+    {
+        <li class="@(isActive ? "active" : "")">
+            <a href="@itemUrl">
+                <i class="fa @(menuIcon) text-primary"></i><span>@text</span>
+                @if (!string.IsNullOrEmpty(bubbleText))
+                {
+                    <span class="pull-right-container">
+                        <small class="label pull-right">@bubbleText</small>
+                    </span>
+                }
+            </a>
+        </li>
+    }
+}

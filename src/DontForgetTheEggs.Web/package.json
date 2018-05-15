@@ -1,0 +1,28 @@
+{
+  "name": "dontforgettheeggs.web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "admin-lte": "^3.0.0-alpha.2",
+    "bootstrap-datepicker": "^1.8.0",
+    "select2": "^4.0.6-rc.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-debug": "^4.0.0",
+    "gulp-filenames": "^4.0.1",
+    "gulp-inject": "^4.3.2",
+    "gulp-print": "^5.0.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-using": "^0.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
