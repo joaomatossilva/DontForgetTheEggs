@@ -17,11 +17,16 @@
 
 
 namespace DontForgetTheEggs.Web.DependencyResolution {
+    using DontForgetTheEggs.Core;
     using StructureMap;
 	
     public static class IoC {
         public static IContainer Initialize() {
-            return new Container(c => c.AddRegistry<DefaultRegistry>());
+            return new Container(c =>
+            {
+                c.AddRegistry<DefaultRegistry>();
+                c.AddRegistry<CoreRegistry>();
+            });
         }
     }
 }

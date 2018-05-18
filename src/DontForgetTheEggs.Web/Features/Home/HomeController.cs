@@ -1,26 +1,23 @@
-﻿using System.Web.Mvc;
+﻿using System.Threading.Tasks;
+using System.Web.Mvc;
+using DontForgetTheEggs.Core.Features.Home;
+using MediatR;
 
 namespace DontForgetTheEggs.Web.Features.Home
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly IMediator _mediator;
+
+        public HomeController(IMediator mediator)
         {
-            return View();
+            _mediator = mediator;
         }
 
-        public ActionResult About()
+        public async Task<ActionResult> Index()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var model = await _mediator.Send(new Index.Query());
+            return View(model);
         }
     }
 }

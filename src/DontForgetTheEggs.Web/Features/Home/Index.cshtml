@@ -1,53 +1,37 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model PagedList.IPagedList<DontForgetTheEggs.Core.Features.Home.Index.Model>
+@{
+    ViewBag.Title = "Hello to Don't forget the Eggs";
 }
 
 
 <div class="card card-primary card-outline">
     <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">Uncompleted Grocery Lists</h5>
 
-        <p class="card-text">
-            Some quick example text to build on the card title and make up the bulk of the card's
-            content.
-        </p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    @{ DontForgetTheEggs.Core.Features.Home.Index.Model nullItem = null; }
+                    <th>@Html.LabelFor(x => nullItem.Name)</th>
+                    <th>@Html.LabelFor(x => nullItem.CreatedUtc)</th>
+                    <th>@Html.LabelFor(x => nullItem.DueIn)</th>
+                    <th>@Html.LabelFor(x => nullItem.MissingItemsCount)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(x => item.Name)</td>
+                    <td>@Html.DisplayFor(x => item.CreatedUtc)</td>
+                    <td>@Html.DisplayFor(x => item.DueIn)</td>
+                    <td>@Html.DisplayFor(x => item.MissingItemsCount)</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        <a href="#" class="card-link">Create new List</a>
     </div>
 </div><!-- /.card -->
 
-<div class="row">
-
-    <div class="col-lg-6">
-        <div class="card card-primary card-outline">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's
-                    content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div><!-- /.card -->
-    </div>
-    <!-- /.col-lg-6 -->
-
-    <div class="col-lg-6">
-        <div class="card card-primary card-outline">
-            <div class="card-header">
-                <h5 class="m-0">Featured</h5>
-            </div>
-            <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
-
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-    <!-- /.col-lg-6 -->
-
-</div>
-<!-- /.row -->

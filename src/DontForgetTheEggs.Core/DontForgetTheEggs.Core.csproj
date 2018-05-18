@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="Common\Exceptions\EggsDataException.cs" />
     <Compile Include="Common\Extensions\PagedListExtensions.cs" />
+    <Compile Include="CoreRegistry.cs" />
     <Compile Include="Data\Category.cs" />
     <Compile Include="Data\EggsContext.cs" />
     <Compile Include="Data\Grocery.cs" />
