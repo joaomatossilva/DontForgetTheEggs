@@ -9,6 +9,7 @@
     <!-- inject:Styles:css -->
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/node_modules/admin-lte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/node_modules/admin-lte/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/node_modules/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="/node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css">
     <link rel="stylesheet" href="/node_modules/admin-lte/plugins/timepicker/bootstrap-timepicker.min.css">
@@ -16,27 +17,8 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-@*
-    BODY TAG OPTIONS:
-    =================
-    Apply one or more of the following classes to get the
-    desired effect
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
-    |LAYOUT OPTIONS | fixed                                   |
-    |               | layout-boxed                            |
-    |               | layout-top-nav                          |
-    |               | sidebar-collapse                        |
-    |               | sidebar-mini                            |
-    |---------------------------------------------------------|
-*@
-<body class="sidebar-mini">
+
+<body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
         @Html.Partial("_Header")
@@ -46,18 +28,26 @@
 
         @*Content Wrapper. Contains page content*@
         <div class="content-wrapper">
+
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>@ViewBag.Title</h1>
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <h1 class="m-0 text-dark">@ViewBag.Title</h1>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
             </section>
+
             <!-- Main content -->
-            <section class="content container-fluid">
-                <!--------------------------
-            | Your Page Content Here |
-            -------------------------->
-                @RenderBody()
+            <section class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
             </section>
             <!-- /.content -->
+
         </div>
         <!-- /.content-wrapper -->
         @*Main Footer*@

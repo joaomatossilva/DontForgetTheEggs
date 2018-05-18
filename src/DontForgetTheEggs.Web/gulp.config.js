@@ -23,6 +23,7 @@
     cssFiles: [
         'node_modules/admin-lte/plugins/bootstrap/css/bootstrap.min.css',
         'node_modules/admin-lte/dist/css/adminlte.min.css',
+        'node_modules/admin-lte/plugins/font-awesome/css/font-awesome.min.css',
         'node_modules/admin-lte/plugins/select2/select2.min.css',
         'node_modules/admin-lte/plugins/datepicker/datepicker3.css',
         'node_modules/admin-lte/plugins/timepicker/bootstrap-timepicker.min.css'
