@@ -92,6 +92,7 @@
     <Compile Include="Data\Grocery.cs" />
     <Compile Include="Data\GroceryList.cs" />
     <Compile Include="Data\GroceryListItem.cs" />
+    <Compile Include="Features\GroceryList\Create.cs" />
     <Compile Include="Features\Home\Index.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translations\AppResources.Designer.cs">

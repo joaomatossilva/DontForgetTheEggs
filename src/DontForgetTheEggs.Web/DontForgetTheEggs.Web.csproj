@@ -179,6 +179,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Features\GroceryList\GroceryListController.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
@@ -222,6 +223,7 @@
     <Content Include="Features\Shared\_Footer.cshtml" />
     <Content Include="Features\Shared\_LeftSideBar.cshtml" />
     <Content Include="Features\Home\Index_body_reference.cshtml" />
+    <Content Include="Features\GroceryList\Create.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -250,6 +252,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Groceries\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

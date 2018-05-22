@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.Configuration;
 using DontForgetTheEggs.Core.Data;
+using FluentValidation;
 using MediatR;
 using StructureMap;
 using StructureMap.Pipeline;
@@ -15,8 +16,10 @@ namespace DontForgetTheEggs.Core
             {
                 scanner.AssemblyContainingType<CoreRegistry>();
                 scanner.ConnectImplementationsToTypesClosing(typeof(IRequestHandler<,>));
+                scanner.ConnectImplementationsToTypesClosing(typeof(IRequestHandler<>));
                 scanner.ConnectImplementationsToTypesClosing(typeof(INotificationHandler<>));
-                scanner.AddAllTypesOf<Profile>();
+                scanner.ConnectImplementationsToTypesClosing(typeof(IPipelineBehavior<,>));
+                scanner.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
             });
 
             For<IMediator>().LifecycleIs<TransientLifecycle>().Use<Mediator>();

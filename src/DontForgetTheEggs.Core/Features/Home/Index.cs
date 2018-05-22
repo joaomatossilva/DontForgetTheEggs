@@ -30,7 +30,7 @@ namespace DontForgetTheEggs.Core.Features.Home
         {
             public Mappings()
             {
-                CreateMap<GroceryList, Model>()
+                CreateMap<Data.GroceryList, Model>()
                     .ForMember(x => x.MissingItemsCount, opt => opt.MapFrom(src => src.Items.Count(i => !i.Checked)));
             }
         }
@@ -47,7 +47,8 @@ namespace DontForgetTheEggs.Core.Features.Home
             public async Task<IPagedList<Model>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var query = _dbContext.GroceryLists
-                    .Where(x => !x.Complete);
+                    .Where(x => !x.Complete)
+                    .OrderBy(x => x.DueIn);
 
                 var page = request.Page ?? 1;
                 var pageSize = 10; // add settings here
