@@ -22,7 +22,7 @@
                 @foreach(var item in Model)
                 {
                 <tr>
-                    <td>@Html.DisplayFor(x => item.Name)</td>
+                    <td><a href="@Url.Action("Detail", "GroceryList", new { id = item.Id })">@Html.DisplayFor(x => item.Name)</a></td>
                     <td>@Html.DisplayFor(x => item.CreatedUtc)</td>
                     <td>@Html.DisplayFor(x => item.DueIn)</td>
                     <td>@Html.DisplayFor(x => item.MissingItemsCount)</td>

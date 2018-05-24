@@ -1,0 +1,33 @@
+﻿@model DontForgetTheEggs.Core.Features.GroceryList.Detail.Model
+    
+<div class="row">
+
+    <div class="col-lg-6">
+        @using (Html.BeginForm())
+        {
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">@Model.Name</h3>
+                    <div class="card-tools">
+                        <a href="@Url.Action("Edit", new { id = Model.Id })"><i class="fa fa-edit"></i></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    
+                    @foreach(var item in Model.Items)
+                    {
+                        <div class="list-item">
+                            <span>@item.GroceryName (@item.Quantity)</span> 
+                            <input type="checkbox" />
+                        </div>
+                    }
+
+                </div>
+                <div class="card-footer">
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-default pull-right">Back</a>
+                </div>
+            </div><!-- /.card -->
+        }
+    </div>
+    <!-- /.col-lg-6 -->
+</div>
