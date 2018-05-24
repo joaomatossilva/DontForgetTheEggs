@@ -1,11 +1,28 @@
-﻿@{
-    ViewBag.Title = "Hello to Don't forget the Eggs";
+﻿@model PagedList.IPagedList < DontForgetTheEggs.Core.Features.Manage.Category.Index.Model >
+@{
+    ViewBag.Title = "Manage Categories";
 }
 
 
 <div class="card card-primary card-outline">
     <div class="card-body">
-        <p> Just a test </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    @{ DontForgetTheEggs.Core.Features.Manage.Category.Index.Model nullItem = null; }
+                    <th>@Html.LabelFor(x => nullItem.Name)</th>
+                    <th>@Html.LabelFor(x => nullItem.GroceryCount)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("Detail", "Category", new { id = item.Id })">@Html.DisplayFor(x => item.Name)</a></td>
+                        <td>@Html.DisplayFor(x => item.GroceryCount)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div><!-- /.card -->
-

@@ -187,6 +187,7 @@
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
     <Compile Include="DependencyResolution\StructureMapScopeModule.cs" />
     <Compile Include="Features\Manage\Category\CategoryController.cs" />
+    <Compile Include="Features\Manage\Grocery\GroceryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,6 +230,7 @@
     <Content Include="Features\GroceryList\Detail.cshtml" />
     <Content Include="Features\GroceryList\_AddNewIngredient.cshtml" />
     <Content Include="Features\Manage\Category\Index.cshtml" />
+    <Content Include="Features\Manage\Grocery\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -257,7 +259,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Features\Manage\Grocery\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

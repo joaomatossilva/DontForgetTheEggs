@@ -97,6 +97,8 @@
     <Compile Include="Features\GroceryList\Detail.cs" />
     <Compile Include="Features\GroceryList\Edit.cs" />
     <Compile Include="Features\Home\Index.cs" />
+    <Compile Include="Features\Manage\Grocery\Index.cs" />
+    <Compile Include="Features\Manage\Category\Index.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translations\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -1,15 +1,15 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using DontForgetTheEggs.Core.Features.Manage.Category;
+using DontForgetTheEggs.Core.Features.Manage.Grocery;
 using MediatR;
 
-namespace DontForgetTheEggs.Web.Features.Manage.Category
+namespace DontForgetTheEggs.Web.Features.Manage.Grocery
 {
-    public class CategoryController : Controller
+    public class GroceryController : Controller
     {
         private readonly IMediator _mediator;
 
-        public CategoryController(IMediator mediator)
+        public GroceryController(IMediator mediator)
         {
             _mediator = mediator;
         }

@@ -1,0 +1,28 @@
+﻿@model PagedList.IPagedList < DontForgetTheEggs.Core.Features.Manage.Grocery.Index.Model >
+@{
+    ViewBag.Title = "Manage Groceries";
+}
+
+
+<div class="card card-primary card-outline">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    @{ DontForgetTheEggs.Core.Features.Manage.Grocery.Index.Model nullItem = null; }
+                    <th>@Html.LabelFor(x => nullItem.Name)</th>
+                    <th>@Html.LabelFor(x => nullItem.CategoryName)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("Detail", "Grocery", new { id = item.Id })">@Html.DisplayFor(x => item.Name)</a></td>
+                        <td><a href="@Url.Action("Detail", "Category", new { id = item.CategoryId })">@Html.DisplayFor(x => item.CategoryName)</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div><!-- /.card -->

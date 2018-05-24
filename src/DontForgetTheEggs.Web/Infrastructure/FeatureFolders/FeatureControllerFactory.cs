@@ -8,7 +8,7 @@ namespace DontForgetTheEggs.Web.Infrastructure.FeatureFolders
     {
         protected override Type GetControllerType(RequestContext requestContext, string controllerName)
         {
-            var area = (string)requestContext.RouteData.Values["Area"];
+            var area = (string)requestContext.RouteData.DataTokens["area"];
             if (String.IsNullOrEmpty(area))
             {
                 return typeof(FeatureControllerFactory).Assembly.GetType($"DontForgetTheEggs.Web.Features.{controllerName}.{controllerName}Controller");
