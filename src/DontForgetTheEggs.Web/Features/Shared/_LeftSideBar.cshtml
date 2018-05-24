@@ -14,7 +14,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                @GenerateMenuListElement("Home Page", "Index", "Home", null, "fa-home")
+                @GenerateMenuListElement("Home Page", "Index", "Home", menuIcon:"fa-home")
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-dashboard"></i>
@@ -24,8 +24,8 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @GenerateMenuListElement("Home Page", "Index", "Home", null, "fa-home")
-                        @GenerateMenuListElement("Home Page", "Index", "Home", null, "fa-home")
+                        @GenerateMenuListElement("Groceries", "Index", "Grocery", "Manage", menuIcon: "fa-home")
+                        @GenerateMenuListElement("Categories", "Index", "Category", "Manage", menuIcon: "fa-home")
                     </ul>
                 </li>
             </ul>
@@ -35,10 +35,10 @@
     <!-- /.sidebar -->
 </aside>
 
-@helper GenerateMenuListElement(string text, string action, string controller, string requiredRole = null, string menuIcon = "", string bubbleText = "")
+@helper GenerateMenuListElement(string text, string action, string controller, string area = null, string requiredRole = null, string menuIcon = "", string bubbleText = "")
 {
     var isActive = (string)ViewContext.Controller.ControllerContext.RouteData.Values["controller"] == controller;
-    var itemUrl = Url.Action(action, controller);
+    var itemUrl = Url.Action(action, controller, new { Area = area });
 
     if (!(!string.IsNullOrEmpty(requiredRole) && !ViewContext.HttpContext.User.IsInRole(requiredRole)))
     {
