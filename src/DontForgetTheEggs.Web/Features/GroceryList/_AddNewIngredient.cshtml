@@ -1,0 +1,23 @@
+﻿@model DontForgetTheEggs.Core.Features.GroceryList.AddNewIngredient.Command
+
+@Html.HiddenFor(x => x.GroceryListId)
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true)
+
+<div class="form-group">
+    @Html.LabelFor(x => x.Name)
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Name)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(x => x.CategoryName)
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryName)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(x => x.Quantity)
+    @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Quantity)
+</div>

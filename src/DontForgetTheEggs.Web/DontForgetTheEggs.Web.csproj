@@ -226,6 +226,7 @@
     <Content Include="Features\GroceryList\Create.cshtml" />
     <Content Include="Features\GroceryList\Edit.cshtml" />
     <Content Include="Features\GroceryList\Detail.cshtml" />
+    <Content Include="Features\GroceryList\_AddNewIngredient.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
