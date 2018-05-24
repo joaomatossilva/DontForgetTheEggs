@@ -19,6 +19,18 @@ namespace DontForgetTheEggs.Web.Infrastructure.FeatureFolders
                 "~/Features/{1}/{0}.cshtml",
                 "~/Features/Shared/{0}.cshtml"
             };
+
+            AreaViewLocationFormats = new[]
+            {
+                "~/Features/{2}/{1}/{0}.cshtml",
+                "~/Features/{2}/Shared/{0}.cshtml"
+            };
+
+            AreaPartialViewLocationFormats = new[]
+            {
+                "~/Features/{2}/{1}/{0}.cshtml",
+                "~/Features/{2}/Shared/{0}.cshtml"
+            };
         }
     }
 }

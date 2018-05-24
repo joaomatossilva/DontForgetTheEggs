@@ -8,7 +8,12 @@ namespace DontForgetTheEggs.Web.Infrastructure.FeatureFolders
     {
         protected override Type GetControllerType(RequestContext requestContext, string controllerName)
         {
-            return typeof(FeatureControllerFactory).Assembly.GetType($"DontForgetTheEggs.Web.Features.{controllerName}.{controllerName}Controller");
+            var area = (string)requestContext.RouteData.Values["Area"];
+            if (String.IsNullOrEmpty(area))
+            {
+                return typeof(FeatureControllerFactory).Assembly.GetType($"DontForgetTheEggs.Web.Features.{controllerName}.{controllerName}Controller");
+            }
+            return typeof(FeatureControllerFactory).Assembly.GetType($"DontForgetTheEggs.Web.Features.{area}.{controllerName}.{controllerName}Controller");
         }
     }
 }

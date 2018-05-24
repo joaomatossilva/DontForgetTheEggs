@@ -13,11 +13,20 @@ namespace DontForgetTheEggs.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            var manageRoute = routes.MapRoute(
+                name: "Manage",
+                url: "manage/{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "DontForgetTheEggs.Web.Features.Manage" }
+            );
+            manageRoute.DataTokens["area"] = "Manage";
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }
