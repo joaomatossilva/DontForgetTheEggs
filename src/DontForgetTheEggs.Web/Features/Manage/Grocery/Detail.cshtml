@@ -1,0 +1,41 @@
+﻿@using DontForgetTheEggs.Core.Features.Manage.Grocery
+@model Detail.Model
+    
+<div class="row">
+
+    <div class="col-lg-8">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@Model.Name</h3>
+                <div class="card-tools">
+                    <a href="@Url.Action("Edit", new { id = Model.Id })"><i class="fa fa-edit"></i></a>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <p>
+                    @Html.LabelFor(x => x.CategoryName)
+                    <a href="@Url.Action("Detail", "Category", new { id = Model.CategoryId })">@Html.DisplayFor(x => x.CategoryName)</a>
+                </p>
+
+                <p>
+                    @Html.LabelFor(x => x.LastTimeBoughtUtc)
+                    @if(Model.LastTimeBoughtUtc == null)
+                    {
+                        <span>*Never*</span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(x => x.LastTimeBoughtUtc)
+                    }
+                </p>
+
+            </div>
+            <div class="card-footer">
+                <a href="@Url.Action("Index", "Home")" class="btn btn-default pull-right">Back</a>
+            </div>
+        </div><!-- /.card -->
+    </div>
+    <!-- /.col-lg-8 -->
+
+</div>

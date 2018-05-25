@@ -1,0 +1,32 @@
+﻿@model DontForgetTheEggs.Core.Features.Manage.Category.Create.Command
+    
+<div class="row">
+
+    <div class="col-lg-6">
+        @using (Html.BeginForm())
+        {
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Create Category</h3>
+                </div>
+                <div class="card-body">
+                    
+                    @Html.ValidationSummary(true)
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Name)
+                        @Html.TextBoxFor(x => x.Name, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x => x.Name)
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <input type="submit" class="btn btn-primary" value="Create"/>
+                    <a href="@Url.Action("Index")" class="btn btn-default pull-right">Cancel</a>
+                </div>
+            </div><!-- /.card -->
+        }
+    </div>
+    <!-- /.col-lg-6 -->
+</div>

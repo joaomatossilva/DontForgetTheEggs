@@ -1,0 +1,33 @@
+﻿@using DontForgetTheEggs.Core.Features.Manage.Category
+@model Detail.Model
+    
+<div class="row">
+
+    <div class="col-lg-8">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">@Model.Name</h3>
+                <div class="card-tools">
+                    <a href="@Url.Action("Edit", new { id = Model.Id })"><i class="fa fa-edit"></i></a>
+                </div>
+            </div>
+            <div class="card-body">
+
+                @Html.LabelFor(x => x.Groceries)
+
+                <ul>
+                    @foreach(var item in Model.Groceries)
+                    {
+                        <li><a href="@Url.Action("Detail", "Grocery", new { id = item.Id })">@item.Name</a></li>
+                    }
+                </ul>
+
+            </div>
+            <div class="card-footer">
+                <a href="@Url.Action("Index", "Home")" class="btn btn-default pull-right">Back</a>
+            </div>
+        </div><!-- /.card -->
+    </div>
+    <!-- /.col-lg-8 -->
+
+</div>

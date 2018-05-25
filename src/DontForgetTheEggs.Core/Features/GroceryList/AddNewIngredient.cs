@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using DontForgetTheEggs.Core.Common.Exceptions;
 using DontForgetTheEggs.Core.Data;
+using DontForgetTheEggs.Core.Features.Manage.Category;
 using MediatR;
 
 namespace DontForgetTheEggs.Core.Features.GroceryList
@@ -33,7 +28,7 @@ namespace DontForgetTheEggs.Core.Features.GroceryList
 
             public async Task Handle(Command request, CancellationToken cancellationToken)
             {
-                var category = await FindOrCreateCategory(request.CategoryId, request.CategoryName, cancellationToken)
+                var category = await _dbContext.Categories.FindOrCreateCategory(request.CategoryId, request.CategoryName, cancellationToken)
                     .ConfigureAwait(false);
 
                 var newIngredient = new Grocery
@@ -54,42 +49,6 @@ namespace DontForgetTheEggs.Core.Features.GroceryList
 
                 await _dbContext.SaveChangesAsync(cancellationToken);
             }
-
-            private async Task<Category> FindOrCreateCategory(int? id, string name, CancellationToken cancellationToken)
-            {
-                Category category;
-
-                //find by id
-                if(id != null)
-                {
-                    category = await _dbContext.Categories
-                        .FirstOrDefaultAsync(x => x.Id == id, cancellationToken)
-                        .ConfigureAwait(false);
-
-                    if (category == null)
-                    {
-                        throw new EggsDataException("Unable to get the category");
-                    }
-
-                    return category;
-                }
-
-                //try to find by name first before creating one
-                category = await _dbContext.Categories
-                        .FirstOrDefaultAsync(x => x.Name == name, cancellationToken)
-                        .ConfigureAwait(false);
-                
-                if(category == null)
-                {
-                    category = new Category
-                    {
-                        Name = name
-                    };
-                }
-
-                return category;
-            }
-
         }
     }
 }

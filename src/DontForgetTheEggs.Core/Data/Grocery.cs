@@ -12,5 +12,7 @@ namespace DontForgetTheEggs.Core.Data
         public string Name { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
+
+        public virtual ICollection<GroceryListItem> GroceryListItems { get; set; }
     }
 }

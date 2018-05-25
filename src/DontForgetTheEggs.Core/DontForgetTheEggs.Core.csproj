@@ -97,6 +97,13 @@
     <Compile Include="Features\GroceryList\Detail.cs" />
     <Compile Include="Features\GroceryList\Edit.cs" />
     <Compile Include="Features\Home\Index.cs" />
+    <Compile Include="Features\Manage\Category\CategoryExtensions.cs" />
+    <Compile Include="Features\Manage\Category\Create.cs" />
+    <Compile Include="Features\Manage\Category\Detail.cs" />
+    <Compile Include="Features\Manage\Category\Edit.cs" />
+    <Compile Include="Features\Manage\Grocery\Create.cs" />
+    <Compile Include="Features\Manage\Grocery\Detail.cs" />
+    <Compile Include="Features\Manage\Grocery\Edit.cs" />
     <Compile Include="Features\Manage\Grocery\Index.cs" />
     <Compile Include="Features\Manage\Category\Index.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
