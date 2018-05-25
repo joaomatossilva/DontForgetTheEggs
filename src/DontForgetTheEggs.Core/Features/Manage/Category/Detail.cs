@@ -41,16 +41,16 @@ namespace DontForgetTheEggs.Core.Features.Manage.Category
 
             public async Task<Model> Handle(Query request, CancellationToken cancellationToken)
             {
-                var grocery = await  _dbContext.Categories
+                var category = await  _dbContext.Categories
                     .Where(x => x.Id == request.Id)
                    .ProjectToFirstOrDefaultAsync<Model>();
 
-                if(grocery == null)
+                if(category == null)
                 {
                     throw new EggsDataException("Category not found");
                 }
 
-                return grocery;
+                return category;
             }
         }
         

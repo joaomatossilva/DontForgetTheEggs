@@ -59,5 +59,21 @@ namespace DontForgetTheEggs.Web.Features.Manage.Category
             await _mediator.Send(command);
             return RedirectToAction("Detail", new { command.Id });
         }
+
+        // GET: Category/Delete/1
+        public async Task<ActionResult> Delete(Delete.Query query)
+        {
+            var model = await _mediator.Send(query);
+            return View(model);
+        }
+
+        // POST: Category/Delete/1
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Delete(Delete.Command command)
+        {
+            await _mediator.Send(command);
+            return RedirectToAction("Index");
+        }
     }
 }

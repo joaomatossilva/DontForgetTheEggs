@@ -9,6 +9,7 @@
                 <h3 class="card-title">@Model.Name</h3>
                 <div class="card-tools">
                     <a href="@Url.Action("Edit", new { id = Model.Id })"><i class="fa fa-edit"></i></a>
+                    <a href="@Url.Action("Delete", new { id = Model.Id })"><i class="fa fa-trash"></i></a>
                 </div>
             </div>
             <div class="card-body">

@@ -237,6 +237,7 @@
     <Content Include="Features\Manage\Grocery\Edit.cshtml" />
     <Content Include="Features\Manage\Category\Create.cshtml" />
     <Content Include="Features\Manage\Grocery\Create.cshtml" />
+    <Content Include="Features\Manage\Category\Delete.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using DontForgetTheEggs.Core.Common.Exceptions;
@@ -42,6 +43,13 @@ namespace DontForgetTheEggs.Core.Features.Manage.Category
             }
 
             return category;
+        }
+
+        public static async Task<bool> HasGroceries(this IDbSet<Data.Category> categories, int id, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            var hasCategories = await categories.AnyAsync(x => x.Id == id && x.Groceries.Any(), cancellationToken)
+                .ConfigureAwait(false);
+            return hasCategories;
         }
     }
 }
