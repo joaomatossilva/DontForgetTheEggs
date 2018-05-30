@@ -38,9 +38,10 @@ namespace DontForgetTheEggs.Core.Features.Manage.Category
             public CommandValidator(EggsDbContext dbContext)
             {
                 this.dbContext = dbContext;
-                RuleFor(x => x.ExistingNewCategoryId).NotNull().WhenAsync(async (x, token) =>
-                    await this.dbContext.Categories.HasGroceries(x.Id, token)
-                    .ConfigureAwait(false));
+                RuleFor(x => x.ExistingNewCategoryId).NotNull().When((x) =>
+                    //A Small hack since to allow the WhenAsync, the ValidateAsync must be also called
+                    // and the AspNet framework only calls the Validate version (non async)
+                    this.dbContext.Categories.HasGroceries(x.Id).Result);
             }
         }
 
