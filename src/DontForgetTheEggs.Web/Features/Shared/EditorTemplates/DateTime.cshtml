@@ -1,0 +1,21 @@
+﻿@model DateTime?
+
+<div class="input-group date">
+    <div class="input-group-prepend">
+        <span class="input-group-text">
+            <i class="fa fa-calendar"></i>
+        </span>
+    </div>
+    @Html.TextBox("Date", Model == null ? null : Model.Value.ToShortDateString(), new { @class = "form-control datepicker" })
+</div>
+@if (ViewData.ModelMetadata.PropertyName.Contains("Utc"))
+{
+    var utcDate = Model == null ? null : (DateTime?)DateTime.SpecifyKind((DateTime)Model, DateTimeKind.Utc);
+    var localDate = utcDate == null ? null : (DateTime?)utcDate.Value.ToLocalTime();
+    <div class="input-group time">
+        <div class="input-group-addon">
+            <i class="fa fa-clock-o"></i>
+        </div>
+        @Html.TextBox("Time", localDate == null ? null : localDate.Value.ToShortTimeString(), new { @class = "form-control timepicker" })
+    </div>
+}

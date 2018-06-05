@@ -13,7 +13,7 @@
           Both of these plugins are recommended to enhance the
           user experience.*/
         //'Scripts/ajax-forms.js',
-        //'Scripts/app.js'
+        'Scripts/app.js'
     ],
     viewsToInjectScriptsAfterBody: [
         'Features/Shared/_Layout.cshtml'

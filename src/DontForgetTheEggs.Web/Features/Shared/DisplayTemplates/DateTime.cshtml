@@ -1,0 +1,13 @@
+﻿@model DateTime?
+
+@if (!ViewData.ModelMetadata.PropertyName.Contains("Utc"))
+{
+    var dateText = Model == null ? null : Model.Value.ToShortDateString();
+    @Html.DisplayTextFor(model => dateText)
+}
+else if (Model != null)
+{
+    var utcDate = DateTime.SpecifyKind((DateTime)Model, DateTimeKind.Utc);
+    var localDate = utcDate.ToLocalTime();
+    @Html.DisplayTextFor(model => localDate)
+}

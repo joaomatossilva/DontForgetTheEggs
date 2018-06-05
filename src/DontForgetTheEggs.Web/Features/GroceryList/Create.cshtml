@@ -22,7 +22,7 @@
 
                     <div class="form-group">
                         @Html.LabelFor(x => x.DueIn)
-                        @Html.TextBoxFor(x => x.DueIn, new { @class = "form-control" })
+                        @Html.EditorFor(x => x.DueIn, new { @class = "form-control" })
                         @Html.ValidationMessageFor(x => x.DueIn)
                     </div>
 
