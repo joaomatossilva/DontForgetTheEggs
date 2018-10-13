@@ -41,7 +41,7 @@
                 </div>
                 <div class="card-body">
 
-
+                    @Html.Partial("_AddIngredient", new AddIngredient.Command { GroceryListId = Model.Id, Quantity = 1 })
 
                 </div>
                 <div class="card-footer">

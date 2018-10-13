@@ -1,0 +1,17 @@
+﻿@using DontForgetTheEggs.Web.HtmlHelpers
+@model DontForgetTheEggs.Core.Features.GroceryList.AddIngredient.Command
+
+@Html.HiddenFor(x => x.GroceryListId)
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true)
+
+<div class="form-group">
+    @Html.LabelFor(x => x.GroceryId)
+    @Html.AjaxDropDownListFor(x => x.GroceryId, Url.Action("SearchIngredient", "GroceryList"), "search-ingredient")
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(x => x.Quantity)
+    @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Quantity)
+</div>

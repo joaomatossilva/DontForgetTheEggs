@@ -60,5 +60,20 @@ namespace DontForgetTheEggs.Web.Features.GroceryList
                 .ConfigureAwait(false);
             return RedirectToAction("Detail", new { id = command.GroceryListId });
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddIngredient(AddIngredient.Command command)
+        {
+            await _mediator.Send(command)
+                .ConfigureAwait(false);
+            return RedirectToAction("Detail", new { id = command.GroceryListId });
+        }
+
+        public async Task<ActionResult> SearchIngredient(SearchIngredient.Query query)
+        {
+            var model = await _mediator.Send(query);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
     }
 }
